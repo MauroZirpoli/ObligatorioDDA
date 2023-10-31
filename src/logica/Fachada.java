@@ -34,6 +34,10 @@ public class Fachada {
         return sistemaRuleta.getMesas();
     }
     
+    public ArrayList<Mesa> getMesasDisponibles(){
+        return sistemaRuleta.getMesasDisponibles();
+    }
+    
     public ArrayList<Jugador> getJugadores() {
         return sistemaUsuario.getJugadores();
     }

@@ -18,4 +18,18 @@ class SistemaRuleta {
         return mesas;
     }
     
+    public ArrayList<Mesa> getMesasDisponibles() {
+        ArrayList<Mesa> mesasDisponibles = new ArrayList();
+        
+        for(Mesa m: mesas){
+            if(m.isDisponible()){
+                mesasDisponibles.add(m);
+            }
+        }
+        
+        return mesasDisponibles;
+    }
+    
+    
+    
 }

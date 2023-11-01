@@ -4,8 +4,10 @@
  */
 package ui;
 
+import dominio.Mesa;
 import dominio.TipoApuesta;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,14 +33,14 @@ public class IniciarMesaCrupier extends javax.swing.JFrame implements VistaInici
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        ITipoApuesta = new javax.swing.JList<>();
+        IListTipoApuesta = new javax.swing.JList<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(ITipoApuesta);
+        jScrollPane1.setViewportView(IListTipoApuesta);
 
         jTextField1.setText("Tipo de Apuesta:");
 
@@ -82,7 +84,7 @@ public class IniciarMesaCrupier extends javax.swing.JFrame implements VistaInici
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<TipoApuesta> ITipoApuesta;
+    private javax.swing.JList<TipoApuesta> IListTipoApuesta;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
@@ -91,7 +93,12 @@ public class IniciarMesaCrupier extends javax.swing.JFrame implements VistaInici
 
     @Override
     public void listarTiposDeApuestas(ArrayList<TipoApuesta> tipoApuestas) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        DefaultListModel<TipoApuesta> list = new DefaultListModel<>();
+        
+        for(TipoApuesta t: tipoApuestas){
+            list.addElement(t);
+        }
+        IListTipoApuesta.setModel(list);
     }
 
     @Override

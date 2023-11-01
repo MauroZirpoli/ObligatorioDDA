@@ -12,6 +12,7 @@ public class Mesa {
     private Crupier crupier;
     private boolean disponible;
     private int balanceSaldo;
+    private int numeroDeMesa;
 
     public Mesa(ArrayList<Ronda> rondas, ArrayList<Apuesta> apuestas, ArrayList<TipoApuesta> tiposApuesta, ArrayList<Jugador> jugadores, Crupier crupier) {
         this.rondas = rondas;
@@ -22,7 +23,9 @@ public class Mesa {
         this.disponible=false;
     }
 
-    
+    public int getNumeroDeMesa(){
+        return numeroDeMesa;
+    }
 
     public Crupier getCrupier() {
         return crupier;
@@ -82,14 +85,39 @@ public class Mesa {
         return apuestas.size();
     };
         
-    public int saldoTotalDeLasApuestas(){
-        int saldo=0;
+    public int montoTotalDeLasApuestas(){
+        int monto=0;
         
         for(Apuesta a: apuestas){
-            //saldo+= a.montoTotal(cantidad); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
+            //monto+= a.montoTotal(cantidad); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
         }
-        return saldo;
+        return monto;
     };
+    
+    public int montoTotalApuestasPerdidasRecoleccion(){
+        int monto=0;
+        
+        for(Apuesta a: apuestas){
+            if(!a.getApuestaGanada()){
+                //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
+            }
+        }
+        
+        return monto;
+    }
+    
+    public int montoTotalApuestasPagadasLiquidacion(){
+        int monto=0;
+        
+        for(Apuesta a: apuestas){
+            if(a.getApuestaGanada()){
+                //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
+            }
+        }
+        
+        return monto;
+    }
+    
     
     public int totalDeApuestasPorRonda(){
         int apuestasPorRonda;
@@ -113,5 +141,18 @@ public class Mesa {
                 balanceSaldo -= a.getMontoTotal();
             }
         }
+    }
+    
+    public ArrayList<Integer> ultimosSeisNumerosSorteados(){
+        ArrayList<Integer> ultimosNumeros = new ArrayList<>();
+        
+        int inicio = Math.max(0, rondas.size() - 6);
+        
+        for(int x = inicio; x < rondas.size(); x++){
+            Ronda r = rondas.get(x);
+            ultimosNumeros.add(r.getBola().getNumero());
+        }
+        
+        return ultimosNumeros;
     }
 }

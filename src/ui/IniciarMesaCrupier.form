@@ -65,7 +65,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="ITipoApuesta">
+        <Component class="javax.swing.JList" name="IListTipoApuesta">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;TipoApuesta&gt;"/>
           </AuxValues>

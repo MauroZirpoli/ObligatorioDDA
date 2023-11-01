@@ -5,6 +5,7 @@ import Exceptions.UsuariosExceptions;
 import dominio.Crupier;
 import dominio.Jugador;
 import dominio.Mesa;
+import dominio.Ronda;
 import dominio.TipoApuesta;
 import java.util.ArrayList;
 
@@ -36,6 +37,10 @@ public class Fachada {
     
     public ArrayList<Mesa> getMesasDisponibles(){
         return sistemaRuleta.getMesasDisponibles();
+    }
+    
+    public ArrayList<Ronda> obtenerRondasDeJugador(Jugador jugador){
+        return sistemaRuleta.obtenerRondasDeJugador(jugador);
     }
     
     public ArrayList<Jugador> getJugadores() {

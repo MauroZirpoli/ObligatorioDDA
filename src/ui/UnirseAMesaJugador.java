@@ -6,6 +6,7 @@ package ui;
 
 import dominio.Mesa;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,7 +34,7 @@ public class UnirseAMesaJugador extends javax.swing.JFrame implements VistaUnirs
         btnUnirse = new javax.swing.JButton();
         btnLogOff = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList = new javax.swing.JList<>();
+        IListMesa = new javax.swing.JList<>();
         titulo = new javax.swing.JTextField();
         subTitulo = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -45,7 +46,7 @@ public class UnirseAMesaJugador extends javax.swing.JFrame implements VistaUnirs
 
         btnLogOff.setText("Log Off");
 
-        jScrollPane1.setViewportView(jList);
+        jScrollPane1.setViewportView(IListMesa);
 
         titulo.setText("Aplicacion Jugador - Unirse a una Mesa");
 
@@ -108,9 +109,9 @@ public class UnirseAMesaJugador extends javax.swing.JFrame implements VistaUnirs
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<Mesa> IListMesa;
     private javax.swing.JButton btnLogOff;
     private javax.swing.JButton btnUnirse;
-    private javax.swing.JList<Mesa> jList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -120,7 +121,13 @@ public class UnirseAMesaJugador extends javax.swing.JFrame implements VistaUnirs
 
     @Override
     public void listarMesasDisponibles(ArrayList<Mesa> mesasDisponibles) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        DefaultListModel<Mesa> list = new DefaultListModel<>();
+        
+        for(Mesa m: mesasDisponibles){
+            list.addElement(m);
+        }
+        IListMesa.setModel(list);
     }
 
     @Override

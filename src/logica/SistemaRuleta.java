@@ -1,7 +1,9 @@
 
 package logica;
 
+import dominio.Jugador;
 import dominio.Mesa;
+import dominio.Ronda;
 import java.util.ArrayList;
 
 class SistemaRuleta {
@@ -30,6 +32,16 @@ class SistemaRuleta {
         return mesasDisponibles;
     }
     
-    
+    public ArrayList<Ronda> obtenerRondasDeJugador(Jugador jugador) {
+        ArrayList<Ronda> rondasParticipadas = new ArrayList<>();
+
+        for (Mesa mesa : mesas) {
+            if (mesa.getJugadores().contains(jugador)) {
+                rondasParticipadas.addAll(mesa.getRondas());
+            }
+        }
+
+        return rondasParticipadas;
+    }
     
 }

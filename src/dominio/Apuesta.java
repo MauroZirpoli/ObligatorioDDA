@@ -38,7 +38,6 @@ public class Apuesta {
     }
     
     
-    
     /**public int gananciaDeLaApuesta(){
         return montoTotal(/*int cantidad) * tipoApuesta.
     }*/

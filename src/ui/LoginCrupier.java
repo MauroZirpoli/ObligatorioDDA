@@ -97,14 +97,14 @@ public abstract class LoginCrupier extends javax.swing.JDialog {
         if (crupier == null) {
             JOptionPane.showMessageDialog(this, "Login incorrecto, revise usuario y passoword y reintente.", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
         } else {
-            ejecutarCasoUsoInicial(crupier);
+            ejecutarLogin(crupier);
             this.dispose();
         }
     }
 
     protected abstract Crupier loginCrupier(String nombreUsuario, String password);
 
-    protected abstract void ejecutarCasoUsoInicial(Crupier crupier);
+    protected abstract void ejecutarLogin(Crupier crupier);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;

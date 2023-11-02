@@ -6,6 +6,8 @@ package ui;
 
 import Exceptions.UsuariosExceptions;
 import dominio.Crupier;
+import dominio.Jugador;
+import dominio.Usuario;
 import java.awt.Frame;
 import logica.Fachada;
 
@@ -13,27 +15,28 @@ import logica.Fachada;
  *
  * @author Mauro
  */
-public class DialogoLoginCrupier extends LoginCrupier{
+public class DialogoLoginCrupier extends DialogoLoginGenerico{
 
     public DialogoLoginCrupier(Frame parent, boolean modal) {
         super(parent, modal);
-        this.setTitle("Este es el Login Crupier");
+        super.setControlador(new ControladorLoginCrupier(this));
+        this.setTitle("Ingresa datos de Crupier");
     }
 
-    @Override
-    protected Crupier loginCrupier(String nombreUsuario, String password) {
+    /*@Override
+    protected Crupier loginCrupier(int cedula, String password) {
         try{
-            return Fachada.getInstancia().loginCrupier(nombreUsuario, password);
+            return Fachada.getInstancia().loginCrupier(cedula, password);
         }catch(UsuariosExceptions e){
             //ToDo: Devolverle mensaje de error a la vista.
             
            return null;
         }
-    }
+    }*/
 
     @Override
-    protected void ejecutarCasoUsoInicial(Crupier crupier) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void ejecutarLogin(Usuario usu) {
+        new IniciarMesaCrupier((java.awt.Frame) this.getParent(), false, (Crupier) usuarioCrupier).setVisible(true);
     }
     
 }

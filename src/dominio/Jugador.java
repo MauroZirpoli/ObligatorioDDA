@@ -2,35 +2,22 @@
 package dominio;
 
 
-public class Jugador {
+public class Jugador extends Usuario{
     
-    private int cedula;
-    private String contraseña;
-    private String nombreCompleto;
-    private double saldoInicial;
+    private int saldoInicial;
     private boolean logueado;
 
-    public Jugador(int cedula, String contraseña, String nombreCompleto, double saldoInicial) {
-        this.cedula = cedula;
-        this.contraseña = contraseña;
-        this.nombreCompleto = nombreCompleto;
-        this.saldoInicial = saldoInicial;
+    public Jugador(int cedula, String nombre, String password, int saldo) {
+        super(cedula, nombre, password);
+        this.saldoInicial = saldo;
     }
 
-    public int getCedula() {
-        return cedula;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public double getSaldoInicial() {
+    public int getSaldoInicial() {
         return saldoInicial;
+    }
+
+    public void setSaldoInicial(int saldoInicial) {
+        this.saldoInicial = saldoInicial;
     }
 
     public boolean isLogueado() {
@@ -40,6 +27,9 @@ public class Jugador {
     public void setLogueado(boolean logueado) {
         this.logueado = logueado;
     }
+    
+    
+
     
     
     

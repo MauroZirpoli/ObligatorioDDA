@@ -63,4 +63,12 @@ public class Fachada {
         return sistemaUsuario.loginCrupier(nombre,password);
     }
     
+    public void agregarJugador(Jugador jugador){
+        sistemaUsuario.agregar(jugador);
+    }
+    
+    public void agregarCrupier(Crupier crupier){
+        sistemaUsuario.agregar(crupier);
+    }
+    
 }

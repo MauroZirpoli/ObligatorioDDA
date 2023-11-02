@@ -4,6 +4,8 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mauro
@@ -26,71 +28,75 @@ public class InicioVentana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        btnLoginJugador = new javax.swing.JButton();
+        btnLoginCrupier = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu4.setText("File");
-
-        jMenuItem1.setText("Login Jugador");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginJugador.setText("Iniciar como Jugador");
+        btnLoginJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnLoginJugadorActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
 
-        jMenuItem2.setText("Login Crupier");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginCrupier.setText("Iniciar con Crupier");
+        btnLoginCrupier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                btnLoginCrupierActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem2);
-
-        jMenuBar2.add(jMenu4);
-
-        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(btnLoginJugador)
+                .addGap(38, 38, 38)
+                .addComponent(btnLoginCrupier)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoginJugador)
+                    .addComponent(btnLoginCrupier))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        this.loginUsuario();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void btnLoginJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginJugadorActionPerformed
+        loginJugador();
+    }//GEN-LAST:event_btnLoginJugadorActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        this.loginCrupier();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void btnLoginCrupierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginCrupierActionPerformed
+        loginCrupier();
+    }//GEN-LAST:event_btnLoginCrupierActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JButton btnLoginCrupier;
+    private javax.swing.JButton btnLoginJugador;
     // End of variables declaration//GEN-END:variables
 
     private void loginCrupier() {
         new DialogoLoginCrupier(this, false).setVisible(true);
     }
 
-    private void loginUsuario() {
+    private void loginJugador() {
         new DialogoLoginJugador(this, false).setVisible(true);
     }
+    
+    /*private void cerrar() {
+        if(JOptionPane.showConfirmDialog(this, "Confirma que desea salir", "Salir del sistema", JOptionPane.YES_NO_OPTION) == 0) {
+            System.exit(0); //salir completamente del sistema
+        }
+    }*/
 }

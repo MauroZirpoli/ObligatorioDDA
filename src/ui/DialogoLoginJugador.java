@@ -6,6 +6,7 @@ package ui;
 
 import Exceptions.UsuariosExceptions;
 import dominio.Jugador;
+import dominio.Usuario;
 import java.awt.Frame;
 import logica.Fachada;
 
@@ -13,29 +14,30 @@ import logica.Fachada;
  *
  * @author Mauro
  */
-public class DialogoLoginJugador extends LoginJugador{
+public class DialogoLoginJugador extends DialogoLoginGenerico{
     
     public DialogoLoginJugador(Frame parent, boolean modal) {
         super(parent, modal);
-        this.setTitle("Ingrese suss de Usuario agenda credenciales de Usuario agenda");
+        super.setControlador(new ControladorLoginJugador(this));
+        this.setTitle("Ingrese sus datos como Jugador");
     }
 
-    @Override
-    protected Jugador loginJugador(String nombreUsuario, String password) {
+    /*@Override
+    protected Jugador loginJugador(int cedula, String password) {
         
         
         try{
-            return Fachada.getInstancia().loginJugador(nombreUsuario, password);
+            return Fachada.getInstancia().loginJugador(cedula, password);
         }catch(UsuariosExceptions e){
             //ToDo: Devolverle mensaje de error a la vista.
             
            return null;
         }
-    }
+    }*/
 
     @Override
-    protected void ejecutarCasoUsoInicial(Jugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void ejecutarLogin(Usuario usu) {
+        new UnirseAMesaJugador((java.awt.Frame) this.getParent(), false, (Jugador) usuarioJugador).setVisible(true);
     }
     
 }

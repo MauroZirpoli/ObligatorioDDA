@@ -8,6 +8,8 @@ import Controladores.ControladorIniciarMesaCrupier;
 import dominio.Crupier;
 import dominio.Mesa;
 import dominio.TipoApuesta;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -25,7 +27,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
 
         initComponents();
         this.controlador = new ControladorIniciarMesaCrupier(this, crupier);
-        /*inicializar();*/
+        inicializar();
     }
     
     @SuppressWarnings("unchecked")
@@ -47,6 +49,11 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         jTextField2.setText("Aplicacion Crupier - Iniciar Mesa");
 
         btnIniciar.setText("Iniciar");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +88,10 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        iniciar();
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -90,7 +101,12 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
-@Override
+
+    private void inicializar() {
+        controlador.listarTipoApuestas();
+    }
+    
+    @Override
     public void listarTiposDeApuestas(ArrayList<TipoApuesta> tipoApuestas) {
         DefaultListModel<TipoApuesta> list = new DefaultListModel<>();
         
@@ -109,5 +125,29 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
     public void salir() {
         dispose();
     }
+
+    private void iniciar() {
+        
+        btnIniciar.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                
+                TipoApuesta[] items = IListTipoApuesta.getSelectedValuesList().toArray(new TipoApuesta[0]);
+                
+                Mesa mesa = new Mesa(controlador.getUsuarioCrupier());
+                
+                for (TipoApuesta tipo : items) {
+                    mesa.agregarTipoApuesta(tipo);
+                }
+                    
+                mesa.setDisponible(true);
+                new OperarMesaCrupier().setVisible(true);
+                //ToDo:completar ahora la parte de OperarMesaCrupier()
+            }
+        });
+        
+    }
+
+
 
 }

@@ -21,6 +21,10 @@ public abstract class Usuario {
         this.nombre = nombre;
         this.password = password;
     }
+    
+    public boolean validarCredenciales(int cedula, String password){
+        return this.cedula == cedula && this.password.equals(password);
+    }
 
     public int getCedula() {
         return cedula;
@@ -29,8 +33,7 @@ public abstract class Usuario {
     public void setCedula(int cedula) {
         this.cedula = cedula;
     }
-
-    
+ 
 
     public String getNombre() {
         return nombre;

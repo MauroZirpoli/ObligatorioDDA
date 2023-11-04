@@ -55,12 +55,12 @@ public class Fachada {
         return sistemaTipoApuesta.getTiposApuesta();
     }
     
-    public Jugador loginJugador(String nombre, String password) throws UsuariosExceptions {
-        return sistemaUsuario.loginJugador(nombre,password);
+    public Jugador loginJugador(int cedula, String password) throws UsuariosExceptions {
+        return sistemaUsuario.loginJugador(cedula,password);
     }
     
-    public Crupier loginCrupier(String nombre, String password) throws UsuariosExceptions{
-        return sistemaUsuario.loginCrupier(nombre,password);
+    public Crupier loginCrupier(int cedula, String password) throws UsuariosExceptions{
+        return sistemaUsuario.loginCrupier(cedula,password);
     }
     
     public void agregarJugador(Jugador jugador){

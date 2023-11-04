@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaIniciarMesaCrupier{
+public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaIniciarMesaCrupier {
 
     private ControladorIniciarMesaCrupier controlador;
-    
+
     public IniciarMesaCrupier() {
         initComponents();
     }
@@ -29,7 +29,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         this.controlador = new ControladorIniciarMesaCrupier(this, crupier);
         inicializar();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -92,7 +92,6 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         iniciar();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<TipoApuesta> IListTipoApuesta;
@@ -105,12 +104,12 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
     private void inicializar() {
         controlador.listarTipoApuestas();
     }
-    
+
     @Override
     public void listarTiposDeApuestas(ArrayList<TipoApuesta> tipoApuestas) {
         DefaultListModel<TipoApuesta> list = new DefaultListModel<>();
-        
-        for(TipoApuesta t: tipoApuestas){
+
+        for (TipoApuesta t : tipoApuestas) {
             list.addElement(t);
         }
         IListTipoApuesta.setModel(list);
@@ -127,7 +126,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
     }
 
     private void iniciar() {
-        
+        /*    
         btnIniciar.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -144,10 +143,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
                 new OperarMesaCrupier().setVisible(true);
                 //ToDo:completar ahora la parte de OperarMesaCrupier()
             }
-        });
-        
+           });*/
+
     }
-
-
-
 }

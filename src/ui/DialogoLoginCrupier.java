@@ -4,6 +4,7 @@
  */
 package ui;
 
+import Controladores.ControladorLoginCrupier;
 import Exceptions.UsuariosExceptions;
 import dominio.Crupier;
 import dominio.Jugador;
@@ -36,7 +37,17 @@ public class DialogoLoginCrupier extends DialogoLoginGenerico{
 
     @Override
     public void ejecutarLogin(Usuario usu) {
-        new IniciarMesaCrupier((java.awt.Frame) this.getParent(), false, (Crupier) usuarioCrupier).setVisible(true);
+        new IniciarMesaCrupier((java.awt.Frame) this.getParent(), false, (Crupier) usu).setVisible(true);
+    }
+
+    @Override
+    public void mostrarError(String msj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void salir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

@@ -5,7 +5,8 @@
 package ui;
 
 import Controladores.ControladorLogin;
-import dominio.Usuario;
+import interfaces.VistaLogin;
+
 
 /**
  *
@@ -35,11 +36,16 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
         lblCedula = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        txtPasword = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         lblCedula.setText("Cedula:");
 
@@ -58,7 +64,7 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
                             .addComponent(lblCedula))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPasword, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                             .addComponent(txtCedula)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(163, 163, 163)
@@ -75,7 +81,7 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
-                    .addComponent(txtPasword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(btnIngresar)
                 .addGap(116, 116, 116))
@@ -84,14 +90,31 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        ingresar ();
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JPasswordField txtPasword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 
-   
+    private void ingresar() {
+        int cedula = Integer.parseInt(txtCedula.getText());
+        String password = new String(txtPassword.getPassword());
+        this.controlador.loginUsuario(cedula, password);
+    }
+
+    public ControladorLogin getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorLogin controlador) {
+        this.controlador = controlador;
+    }
+       
 }

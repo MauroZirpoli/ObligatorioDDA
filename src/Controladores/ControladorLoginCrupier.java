@@ -5,30 +5,27 @@
 package Controladores;
 
 import Exceptions.UsuariosExceptions;
-import dominio.Jugador;
+import dominio.Crupier;
 import dominio.Usuario;
 import interfaces.VistaLogin;
 import logica.Fachada;
 
-
 /**
  *
- * @author Mauro
+ * @author Angela
  */
-public class ControladorLoginJugador extends ControladorLogin{
-    
-    public ControladorLoginJugador(VistaLogin vista) {
+public class ControladorLoginCrupier extends ControladorLogin{
+     public ControladorLoginCrupier(VistaLogin vista) {
         super(vista);
     }
 
       @Override
     public void loginUsuario(int cedula, String password) {
         try {
-            Jugador jugador = Fachada.getInstancia().loginJugador(cedula, password);
-            this.vista.ejecutarLogin(jugador);
+            Crupier crupier = Fachada.getInstancia().loginCrupier(cedula, password);
+            this.vista.ejecutarLogin(crupier);
         } catch (UsuariosExceptions ex) {
             this.vista.mostrarError(ex.getMessage());
         }
     }
-    
 }

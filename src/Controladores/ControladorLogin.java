@@ -4,10 +4,22 @@
  */
 package Controladores;
 
+import interfaces.VistaLogin;
+
 /**
  *
  * @author Mauro
  */
-public class ControladorLogin {
+public abstract class ControladorLogin {
+
+    VistaLogin vista;
+    
+    public ControladorLogin (VistaLogin vista){
+        this.vista=vista;
+    }
+    
+    public abstract void loginUsuario(int cedula, String password);
+    
+    
     
 }

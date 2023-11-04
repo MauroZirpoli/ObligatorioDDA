@@ -4,6 +4,7 @@
  */
 package ui;
 
+import Controladores.ControladorLoginJugador;
 import Exceptions.UsuariosExceptions;
 import dominio.Jugador;
 import dominio.Usuario;
@@ -37,7 +38,17 @@ public class DialogoLoginJugador extends DialogoLoginGenerico{
 
     @Override
     public void ejecutarLogin(Usuario usu) {
-        new UnirseAMesaJugador((java.awt.Frame) this.getParent(), false, (Jugador) usuarioJugador).setVisible(true);
+        new UnirseAMesaJugador((java.awt.Frame) this.getParent(), false, (Jugador) usu).setVisible(true);
+    }
+
+    @Override
+    public void mostrarError(String msj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void salir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

@@ -22,6 +22,10 @@ public class ControladorUnirseAMesaJugador /*implements Observador*/{
         this.vista.listarMesasDisponibles(Fachada.getInstancia().getMesasDisponibles());
     }
     
+    public void ejecutarCUJugarJugador(){
+        new JugarJugador();
+    }
+    
     public void cerrar() {
         if (vista.confirmar("Confirma que desea salir", "Unirse a Mesa Jugador")) {
             usuarioJugador.setLogueado(false);

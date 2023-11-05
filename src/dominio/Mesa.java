@@ -11,8 +11,8 @@ public class Mesa {
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Crupier crupier;
     private boolean disponible;
-    private int balanceSaldo;
-    private int numeroDeMesa;
+    private int balanceSaldo=0;
+    private int numeroDeMesa=0;
 
     public Mesa(ArrayList<Ronda> rondas, ArrayList<Apuesta> apuestas, ArrayList<TipoApuesta> tiposApuesta, ArrayList<Jugador> jugadores, Crupier crupier) {
         this.rondas = rondas;
@@ -21,6 +21,7 @@ public class Mesa {
         this.jugadores = jugadores;
         this.crupier = crupier;
         this.disponible=false;
+        numeroDeMesa++;
     }
 
     public Mesa() {

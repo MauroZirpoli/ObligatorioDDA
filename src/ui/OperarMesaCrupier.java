@@ -44,7 +44,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        r = new componente.PanelRuleta();
         jLabel1 = new javax.swing.JLabel();
         txtMontoMesa = new javax.swing.JTextField();
         lbPesos = new javax.swing.JLabel();
@@ -197,6 +196,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                                 .addComponent(lbRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnCerrarMesa)))
+
                         .addGap(8, 8, 8)
                         .addComponent(btnLanzarPagar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -234,7 +234,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private javax.swing.JLabel lbPesos2;
     private javax.swing.JLabel lbRonda;
     private javax.swing.JLabel lbRuleta;
-    private componente.PanelRuleta r;
     private javax.swing.JTextField txtApuestas;
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtMontoMesa;
@@ -318,5 +317,4 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     public void salir() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }

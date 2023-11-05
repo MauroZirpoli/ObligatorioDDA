@@ -3,18 +3,18 @@ package dominio;
 
 public class Crupier extends Usuario{
     
-    private String mesaAsignada;
+    private Mesa mesaAsignada;
     private boolean logueado;
     
     public Crupier(int cedula, String nombre, String password) {
         super(cedula, nombre, password);
     }
 
-    public String getMesaAsignada() {
+    public Mesa getMesaAsignada() {
         return mesaAsignada;
     }
 
-    public void setMesaAsignada(String mesaAsignada) {
+    public void setMesaAsignada(Mesa mesaAsignada) {
         this.mesaAsignada = mesaAsignada;
     }
     

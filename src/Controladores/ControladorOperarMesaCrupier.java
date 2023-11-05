@@ -5,6 +5,7 @@
 package Controladores;
 
 import dominio.Crupier;
+import dominio.Mesa;
 import ui.VistaOperarMesaCrupier;
 
 /**
@@ -19,6 +20,15 @@ public class ControladorOperarMesaCrupier /*implements Observador*/{
     public ControladorOperarMesaCrupier(VistaOperarMesaCrupier vista, Crupier usuarioCrupier) {
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
+    }
+
+    public void obtenerDatos() {
+        Mesa mesaAsignada = usuarioCrupier.getMesaAsignada();
+        int saldoMesa = mesaAsignada.getBalanceSaldo();
+        int numeroMesa = mesaAsignada.getNumeroDeMesa();
+        //int ronda = ronda.getnumero();
+        this.vista.mostrarDatos(saldoMesa, 1, numeroMesa);
+        
     }
     
 }

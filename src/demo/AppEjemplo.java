@@ -12,5 +12,4 @@ public class AppEjemplo {
         DatosPrueba.iniciar();
         new InicioVentana().setVisible(true);
     }
-
 }

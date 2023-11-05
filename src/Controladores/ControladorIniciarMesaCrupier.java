@@ -5,8 +5,10 @@
 package Controladores;
 
 import dominio.Crupier;
+import dominio.TipoApuesta;
 import logica.Fachada;
-import ui.VistaIniciarMesaCrupier;
+import interfaces.VistaIniciarMesaCrupier;
+import java.util.ArrayList;
 
 
 public class ControladorIniciarMesaCrupier /*implements Observador*/{
@@ -20,7 +22,8 @@ public class ControladorIniciarMesaCrupier /*implements Observador*/{
     }
     
     public void listarTipoApuestas(){
-        this.vista.listarTiposDeApuestas(Fachada.getInstancia().getTiposApuesta());
+        ArrayList<TipoApuesta> tipos = Fachada.getInstancia().getTiposApuesta();
+        this.vista.listarTiposDeApuestas(tipos);
     }
     
     public void cerrar() {

@@ -4,6 +4,7 @@
  */
 package ui;
 
+import interfaces.VistaUnirseAMesaJugador;
 import Controladores.ControladorUnirseAMesaJugador;
 import dominio.Jugador;
 import dominio.Mesa;

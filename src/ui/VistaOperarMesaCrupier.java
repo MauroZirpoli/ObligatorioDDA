@@ -9,6 +9,6 @@ package ui;
  * @author Mauro
  */
 public interface VistaOperarMesaCrupier {
-    
+    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa);
     public void salir();
 }

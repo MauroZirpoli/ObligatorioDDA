@@ -1,6 +1,9 @@
 
 package logica;
 
+import dominio.ApuestaColores;
+import dominio.ApuestaDirecta;
+import dominio.ApuestaDocena;
 import java.util.ArrayList;
 import dominio.Crupier;
 import dominio.Jugador;
@@ -30,6 +33,27 @@ public class DatosPrueba {
         Fachada.getInstancia().agregarCrupier(crupier1);
         Fachada.getInstancia().agregarCrupier(crupier2);
         Fachada.getInstancia().agregarCrupier(crupier3);
+        
+        ApuestaColores tipoApuesta1 = new ApuestaColores ("Colores", "Rojo",43);
+        ApuestaColores tipoApuesta2 = new ApuestaColores ("Colores", "Negro", 44);
+        ApuestaDocena tipoApuesta3 = new ApuestaDocena ("Docena", "Primera Docena",40);
+        ApuestaDocena tipoApuesta4 = new ApuestaDocena ("Docena", "Segunda Docena",41);
+        ApuestaDocena tipoApuesta5 = new ApuestaDocena ("Docena", "Tercera Docena",42);
+        ApuestaDirecta tipoApuesta6 = new ApuestaDirecta ("Directa", "0",0);
+        ApuestaDirecta tipoApuesta7 = new ApuestaDirecta ("Directa", "1",1);
+        ApuestaDirecta tipoApuesta8 = new ApuestaDirecta ("Directa", "2",2);
+        ApuestaDirecta tipoApuesta9 = new ApuestaDirecta ("Directa", "32",32);
+        
+         Fachada.getInstancia().agregar(tipoApuesta1);
+         Fachada.getInstancia().agregar(tipoApuesta2);
+         Fachada.getInstancia().agregar(tipoApuesta3);
+         Fachada.getInstancia().agregar(tipoApuesta4);
+         Fachada.getInstancia().agregar(tipoApuesta5);
+         Fachada.getInstancia().agregar(tipoApuesta6);
+         Fachada.getInstancia().agregar(tipoApuesta7);
+         Fachada.getInstancia().agregar(tipoApuesta8);
+         Fachada.getInstancia().agregar(tipoApuesta9);
+        
 		
     }
     

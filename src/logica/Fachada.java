@@ -70,5 +70,9 @@ public class Fachada {
     public void agregarCrupier(Crupier crupier){
         sistemaUsuario.agregar(crupier);
     }
+
+    void agregar(TipoApuesta tipoApuesta1) {
+        sistemaTipoApuesta.agregar(tipoApuesta1);
+    }
     
 }

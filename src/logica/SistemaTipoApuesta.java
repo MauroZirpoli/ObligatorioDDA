@@ -16,10 +16,10 @@ class SistemaTipoApuesta {
         
     }
     
-    /*public void agregar(TipoApuesta tipoApuesta) {
-        tiposApuestas.add(tipoApuesta);
+    public void agregar(TipoApuesta tipoApuesta) {
+        tiposApuesta.add(tipoApuesta);
     }
-*/
+
 
     public ArrayList<TipoApuesta> getTiposApuesta() {
         return tiposApuesta;

@@ -1,20 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ui;
+
+import Controladores.ControladorOperarMesaCrupier;
+import componente.PanelRuleta;
 
 /**
  *
- * @author Mauro
+ * @author digregor
  */
-public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperarMesaCrupier{
+public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperarMesaCrupier {
+
+    private ControladorOperarMesaCrupier controlador;
+    int apuestaRojo = 0;
 
     /**
-     * Creates new form OperarMesaCrupier
+     * Creates new form NewJFrame
      */
     public OperarMesaCrupier() {
         initComponents();
+        inicializar();
     }
 
     /**
@@ -26,29 +29,184 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        r = new componente.PanelRuleta();
+        jLabel1 = new javax.swing.JLabel();
+        txtMontoMesa = new javax.swing.JTextField();
+        lbPesos = new javax.swing.JLabel();
+        txtRonda = new javax.swing.JTextField();
+        lbRonda = new javax.swing.JLabel();
+        lbRuleta = new javax.swing.JLabel();
+        lbPesos2 = new javax.swing.JLabel();
+        txtRuleta = new javax.swing.JTextField();
+        btnCerrarMesa = new javax.swing.JButton();
+        lbApuestas = new javax.swing.JLabel();
+        txtApuestas = new javax.swing.JTextField();
+        txtBarra = new javax.swing.JTextField();
+        lbMonto = new javax.swing.JLabel();
+        txtMonto = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("$ -");
+
+        txtMontoMesa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtMontoMesa.setForeground(new java.awt.Color(255, 51, 51));
+        txtMontoMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMontoMesaActionPerformed(evt);
+            }
+        });
+
+        lbPesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/pesos.png"))); // NOI18N
+
+        txtRonda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        lbRonda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbRonda.setText("Ronda #");
+
+        lbRuleta.setText("Ruleta #");
+
+        lbPesos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/ruleta.png"))); // NOI18N
+
+        btnCerrarMesa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCerrarMesa.setText("Cerrar mesa");
+
+        lbApuestas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbApuestas.setText("Apuestas:");
+
+        txtApuestas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        txtBarra.setText("|");
+        txtBarra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBarraActionPerformed(evt);
+            }
+        });
+
+        lbMonto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbMonto.setText("Monto$");
+
+        txtMonto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(r, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMontoMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(txtApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(lbRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(lbPesos2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCerrarMesa)
+                        .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbPesos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtMontoMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCerrarMesa)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbPesos2)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    @Override
-    public void salir() {
-        dispose();
-    }
+    private void txtBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarraActionPerformed
 
-    
+    private void txtMontoMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMontoMesaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarMesa;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbApuestas;
+    private javax.swing.JLabel lbMonto;
+    private javax.swing.JLabel lbPesos;
+    private javax.swing.JLabel lbPesos2;
+    private javax.swing.JLabel lbRonda;
+    private javax.swing.JLabel lbRuleta;
+    private componente.PanelRuleta r;
+    private javax.swing.JTextField txtApuestas;
+    private javax.swing.JTextField txtBarra;
+    private javax.swing.JTextField txtMonto;
+    private javax.swing.JTextField txtMontoMesa;
+    private javax.swing.JTextField txtRonda;
+    private javax.swing.JTextField txtRuleta;
     // End of variables declaration//GEN-END:variables
+
+    private void inicializar() {
+        controlador.obtenerDatos();
+
+    }
+
+    @Override
+    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa) {
+        txtMontoMesa.setText(saldoMesa + "");
+        txtRonda.setText(ronda + "");
+        txtRuleta.setText(numeroMesa + "");
+    }
+
+    @Override
+    public void salir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

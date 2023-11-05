@@ -7,7 +7,7 @@ package Controladores;
 import dominio.Jugador;
 import logica.Fachada;
 import ui.JugarJugador;
-import ui.VistaUnirseAMesaJugador;
+import interfaces.VistaUnirseAMesaJugador;
 
 public class ControladorUnirseAMesaJugador /*implements Observador*/{
     

@@ -4,6 +4,7 @@
  */
 package ui;
 
+import interfaces.VistaIniciarMesaCrupier;
 import Controladores.ControladorIniciarMesaCrupier;
 import dominio.Crupier;
 import dominio.Mesa;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaIniciarMesaCrupier {
 
@@ -34,15 +36,18 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        IListTipoApuesta = new javax.swing.JList<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTipoAp = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jScrollPane1.setViewportView(IListTipoApuesta);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTextField1.setText("Tipo de Apuesta:");
 
@@ -55,34 +60,43 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
             }
         });
 
+        tblTipoAp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Casillero", "Codigo"
+            }
+        ));
+        tblTipoAp.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jScrollPane2.setViewportView(tblTipoAp);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTextField2)
             .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addGap(119, 119, 119)
                         .addComponent(btnIniciar)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnIniciar)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,13 +106,17 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         iniciar();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<TipoApuesta> IListTipoApuesta;
     private javax.swing.JButton btnIniciar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblTipoAp;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
@@ -107,12 +125,13 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
 
     @Override
     public void listarTiposDeApuestas(ArrayList<TipoApuesta> tipoApuestas) {
-        DefaultListModel<TipoApuesta> list = new DefaultListModel<>();
-
+        String[] columnNames = {"Nombre", "Casillero", "Codigo"};
+        DefaultTableModel modeloDefault = new DefaultTableModel(columnNames, tipoApuestas.size());
+        
         for (TipoApuesta t : tipoApuestas) {
-            list.addElement(t);
+            modeloDefault.addRow(new Object[]{t.getNombre(), t.getCasillero(), t.getCodigo()});
         }
-        IListTipoApuesta.setModel(list);
+        tblTipoAp.setModel(modeloDefault);
     }
 
     @Override
@@ -126,6 +145,15 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
     }
 
     private void iniciar() {
+        int [] selectedRows = tblTipoAp.getSelectedRows();
+        for (int row:selectedRows){
+            Object[] rowData = new Object[tblTipoAp.getColumnCount()];
+            for (int col = 0; col < tblTipoAp.getColumnCount(); col++){
+                rowData[col]=tblTipoAp.getValueAt(row, col);
+            }
+        }
+        new OperarMesaCrupier().setVisible(true);
+       // Mesa mesa = new Mesa(controlador.getUsuarioCrupier());
         /*    
         btnIniciar.addActionListener(new ActionListener() {
 
@@ -145,5 +173,9 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
             }
            });*/
 
+    }
+
+    private void cerrar() {
+        controlador.cerrar();
     }
 }

@@ -3,10 +3,9 @@ package ui;
 import interfaces.VistaOperarMesaCrupier;
 import Controladores.ControladorOperarMesaCrupier;
 import componente.PanelRuleta;
-
-
-
-
+import dominio.MecanismoSorteo;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 
 /**
@@ -51,7 +50,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         lbMonto = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cbEfectos = new javax.swing.JComboBox<>();
+        cbEfectos = new javax.swing.JComboBox();
         btnLanzarPagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,7 +101,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Aplicación Crupier  -  Operar Ruleta");
 
-        cbEfectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEfectos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbEfectos.setToolTipText("");
 
         btnLanzarPagar.setText("Lanzar/Pagar");
@@ -211,7 +210,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarMesa;
     private javax.swing.JButton btnLanzarPagar;
-    private javax.swing.JComboBox<String> cbEfectos;
+    private javax.swing.JComboBox cbEfectos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbApuestas;
@@ -236,10 +235,15 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     
 
     @Override
-    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa) {
+    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa, ArrayList<MecanismoSorteo> efectos) {
         txtMontoMesa.setText(saldoMesa + "");
         txtRonda.setText(ronda + "");
         txtRuleta.setText(numeroMesa + "");
+        DefaultComboBoxModel<MecanismoSorteo> model = new DefaultComboBoxModel<>();
+        for (MecanismoSorteo e : efectos) {
+            model.addElement(e);
+        }
+        cbEfectos.setModel(model);
     }
 
     @Override

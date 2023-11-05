@@ -4,6 +4,10 @@ import java.util.Random;
 
 
 public class ModoAleatorioCompleto extends MecanismoSorteo{
+
+    public ModoAleatorioCompleto(String nombre) {
+        super(nombre);
+    }
     
     public Bola sortearBola() {
         Random random = new Random();

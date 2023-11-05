@@ -12,6 +12,6 @@ import java.util.ArrayList;
  * @author Mauro
  */
 public interface VistaOperarMesaCrupier {
-    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa);
+    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa, ArrayList<MecanismoSorteo> efectos);
     public void salir();
 }

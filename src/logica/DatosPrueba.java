@@ -7,6 +7,10 @@ import dominio.ApuestaDocena;
 import java.util.ArrayList;
 import dominio.Crupier;
 import dominio.Jugador;
+import dominio.MecanismoSorteo;
+import dominio.ModoAleatorioCompleto;
+import dominio.ModoAleatorioParcial;
+import dominio.ModoSimulador;
 
 
 public class DatosPrueba {
@@ -54,7 +58,14 @@ public class DatosPrueba {
          Fachada.getInstancia().agregar(tipoApuesta8);
          Fachada.getInstancia().agregar(tipoApuesta9);
         
-		
+	MecanismoSorteo aleatorioCompl = new ModoAleatorioCompleto ("Aleatorio Completo");
+        MecanismoSorteo aleatorioParcial = new ModoAleatorioParcial ("Aleatorio Parcial");
+        MecanismoSorteo simulador = new ModoSimulador ("Simulador");
+        
+        Fachada.getInstancia().agregar(aleatorioCompl);
+        Fachada.getInstancia().agregar(aleatorioParcial);
+        Fachada.getInstancia().agregar(simulador);
+        
     }
     
 }

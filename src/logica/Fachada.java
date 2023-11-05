@@ -4,6 +4,7 @@ package logica;
 import Exceptions.UsuariosExceptions;
 import dominio.Crupier;
 import dominio.Jugador;
+import dominio.MecanismoSorteo;
 import dominio.Mesa;
 import dominio.Ronda;
 import dominio.TipoApuesta;
@@ -17,11 +18,13 @@ public class Fachada {
     private SistemaUsuario sistemaUsuario;
     private SistemaRuleta sistemaRuleta;
     private SistemaTipoApuesta sistemaTipoApuesta;
+    private SistemaMecanismo sistemaMecanismo;
     
     private Fachada() {
         sistemaUsuario = new SistemaUsuario();
         sistemaRuleta = new SistemaRuleta();
         sistemaTipoApuesta = new SistemaTipoApuesta();
+        sistemaMecanismo = new SistemaMecanismo();
     }
 
     public synchronized static Fachada getInstancia() {
@@ -75,6 +78,12 @@ public class Fachada {
         sistemaTipoApuesta.agregar(tipoApuesta1);
     }
 
-      
+    public ArrayList<MecanismoSorteo> getEfectos() {
+        return sistemaMecanismo.getEfectos();
+    }
     
+    void agregar(MecanismoSorteo efecto) {
+        sistemaMecanismo.agregar(efecto);
+    }
+      
 }

@@ -232,8 +232,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         controlador.obtenerDatos();
     }
     
-    
-
     @Override
     public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa, ArrayList<MecanismoSorteo> efectos) {
         txtMontoMesa.setText(saldoMesa + "");
@@ -249,8 +247,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     @Override
     public void salir() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-  
+    }  
        
 }

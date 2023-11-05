@@ -23,6 +23,10 @@ public class Mesa {
         this.disponible=false;
     }
 
+    public Mesa() {
+        
+    }
+
     public int getNumeroDeMesa(){
         return numeroDeMesa;
     }

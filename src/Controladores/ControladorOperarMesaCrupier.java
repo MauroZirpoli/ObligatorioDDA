@@ -5,33 +5,51 @@
 package Controladores;
 
 import dominio.Crupier;
+import dominio.MecanismoSorteo;
 import dominio.Mesa;
 import interfaces.VistaOperarMesaCrupier;
-
+import java.util.ArrayList;
+import logica.Fachada;
 
 /**
  *
  * @author Mauro
  */
-public class ControladorOperarMesaCrupier /*implements Observador*/{
-    
+public class ControladorOperarMesaCrupier /*implements Observador*/ {
+
     VistaOperarMesaCrupier vista;
     Crupier usuarioCrupier;
+    Mesa mesaAsignada;
 
     public ControladorOperarMesaCrupier(VistaOperarMesaCrupier vista, Crupier usuarioCrupier) {
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
+        this.mesaAsignada = usuarioCrupier.getMesaAsignada();
     }
-    
-  
 
     public void obtenerDatos() {
-        Mesa mesaAsignada = usuarioCrupier.getMesaAsignada();
         int saldoMesa = mesaAsignada.getBalanceSaldo();
         int numeroMesa = mesaAsignada.getNumeroDeMesa();
+        ArrayList<MecanismoSorteo> efectos = Fachada.getInstancia().getEfectos();
         //int ronda = ronda.getnumero();
-        this.vista.mostrarDatos(saldoMesa, 1, numeroMesa);
-        
+        this.vista.mostrarDatos(saldoMesa, 1, numeroMesa, efectos);
+
     }
-    
+
+    public void lanzarPagar() {
+        if (mesaAsignada.isDisponible()) {
+            mesaAsignada.setDisponible(false);
+            //habilitar el boton cerrar mesa
+        } else {
+            mesaAsignada.setDisponible(true);
+            //deshabilitar boton cerrar mesa
+        }
+    }
+
+    public void cerrarMesa() {
+        //liquidar mesa (pagar)
+        // desloguear jug
+        // desloguear el crupier
+    }
+
 }

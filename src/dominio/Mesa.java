@@ -24,6 +24,10 @@ public class Mesa {
         numeroDeMesa++;
     }
 
+    public Mesa() {
+        
+    }
+
     public int getNumeroDeMesa(){
         return numeroDeMesa;
     }

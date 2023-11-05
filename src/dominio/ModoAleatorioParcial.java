@@ -9,6 +9,10 @@ public class ModoAleatorioParcial extends MecanismoSorteo{
     
     private ArrayList<Integer> numerosSorteados = new ArrayList<>();
 
+    public ModoAleatorioParcial(String nombre) {
+        super(nombre);
+    }
+
     public Bola sortearBola() {
         Random random = new Random();
         int numero;

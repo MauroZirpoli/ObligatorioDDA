@@ -4,6 +4,8 @@
  */
 package ui;
 
+import interfaces.VistaJugarJugador;
+
 /**
  *
  * @author Mauro

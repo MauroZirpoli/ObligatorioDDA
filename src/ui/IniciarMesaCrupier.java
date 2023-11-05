@@ -121,6 +121,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
 
     private void inicializar() {
         controlador.listarTipoApuestas();
+        
     }
 
     @Override
@@ -133,6 +134,8 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         }
         tblTipoAp.setModel(modeloDefault);
     }
+    
+    
 
     @Override
     public boolean confirmar(String mensaje, String title) {

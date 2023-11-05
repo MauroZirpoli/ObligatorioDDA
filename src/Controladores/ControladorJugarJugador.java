@@ -6,7 +6,7 @@ package Controladores;
 
 
 import dominio.Jugador;
-import ui.VistaJugarJugador;
+import interfaces.VistaJugarJugador;
 
 
 public class ControladorJugarJugador /*implements Observador*/{

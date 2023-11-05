@@ -26,11 +26,14 @@ public class ControladorIniciarMesaCrupier /*implements Observador*/{
         this.vista.listarTiposDeApuestas(tipos);
     }
     
+        
     public void cerrar() {
         if (vista.confirmar("Confirma que desea salir", "Iniciar Mesa Crupier")) {
             usuarioCrupier.setLogueado(false);
             vista.salir();
         }
     }
+
+    
     
 }

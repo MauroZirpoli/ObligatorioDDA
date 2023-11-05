@@ -6,7 +6,8 @@ package Controladores;
 
 import dominio.Crupier;
 import dominio.Mesa;
-import ui.VistaOperarMesaCrupier;
+import interfaces.VistaOperarMesaCrupier;
+
 
 /**
  *
@@ -21,6 +22,8 @@ public class ControladorOperarMesaCrupier /*implements Observador*/{
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
     }
+    
+  
 
     public void obtenerDatos() {
         Mesa mesaAsignada = usuarioCrupier.getMesaAsignada();

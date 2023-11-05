@@ -20,7 +20,6 @@ class SistemaTipoApuesta {
         tiposApuesta.add(tipoApuesta);
     }
 
-
     public ArrayList<TipoApuesta> getTiposApuesta() {
         return tiposApuesta;
     }

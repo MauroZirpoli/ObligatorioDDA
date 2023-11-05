@@ -74,5 +74,7 @@ public class Fachada {
     void agregar(TipoApuesta tipoApuesta1) {
         sistemaTipoApuesta.agregar(tipoApuesta1);
     }
+
+      
     
 }

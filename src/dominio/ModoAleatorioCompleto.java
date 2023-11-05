@@ -14,5 +14,7 @@ public class ModoAleatorioCompleto extends MecanismoSorteo{
         int numero = random.nextInt(100); // Valor aleatorio en cada ronda
         return new Bola(numero);
     }
+
+    
     
 }

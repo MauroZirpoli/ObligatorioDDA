@@ -5,6 +5,7 @@
 package Controladores;
 
 import dominio.Crupier;
+import dominio.Mesa;
 import dominio.TipoApuesta;
 import logica.Fachada;
 import interfaces.VistaIniciarMesaCrupier;
@@ -19,6 +20,7 @@ public class ControladorIniciarMesaCrupier /*implements Observador*/{
     public ControladorIniciarMesaCrupier(VistaIniciarMesaCrupier vista, Crupier usuarioCrupier) {
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
+        this.usuarioCrupier.setMesaAsignada(new Mesa());
     }
     
     public void listarTipoApuestas(){

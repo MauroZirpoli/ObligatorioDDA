@@ -2,9 +2,10 @@ package dominio;
 
 import java.util.Random;
 import dominio.Ronda;
+import interfaces.Renderizable;
 import java.util.ArrayList;
 
-public abstract class MecanismoSorteo {
+public abstract class MecanismoSorteo implements Renderizable{
     private String nombre;
 
     public MecanismoSorteo(String nombre) {
@@ -20,6 +21,11 @@ public abstract class MecanismoSorteo {
 
     public ArrayList<Ronda> getRondas() {
         return rondas;
+    }
+    
+    @Override
+    public String getRenderDetail() {
+        return this.nombre;
     }
     
 }

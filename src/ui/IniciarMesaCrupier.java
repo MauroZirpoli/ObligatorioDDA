@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaIniciarMesaCrupier {
 
     private ControladorIniciarMesaCrupier controlador;
+    private Crupier crupier;
 
     public IniciarMesaCrupier() {
         initComponents();
@@ -29,6 +30,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
 
         initComponents();
         this.controlador = new ControladorIniciarMesaCrupier(this, crupier);
+        this.crupier = crupier;
         inicializar();
     }
 
@@ -155,7 +157,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
                 rowData[col]=tblTipoAp.getValueAt(row, col);
             }
         }
-        new OperarMesaCrupier().setVisible(true);
+        new OperarMesaCrupier(crupier).setVisible(true);
        // Mesa mesa = new Mesa(controlador.getUsuarioCrupier());
         /*    
         btnIniciar.addActionListener(new ActionListener() {

@@ -6,8 +6,8 @@ package Controladores;
 
 import dominio.Jugador;
 import logica.Fachada;
-import ui.JugarJugador;
 import interfaces.VistaUnirseAMesaJugador;
+import ui.VentanaMesaJugador;
 
 public class ControladorUnirseAMesaJugador /*implements Observador*/{
     
@@ -24,7 +24,7 @@ public class ControladorUnirseAMesaJugador /*implements Observador*/{
     }
     
     public void ejecutarCUJugarJugador(){
-        new JugarJugador();
+        new VentanaMesaJugador();
     }
     
     public void cerrar() {

@@ -10,6 +10,7 @@ import dominio.Crupier;
 import dominio.Jugador;
 import dominio.Usuario;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 import logica.Fachada;
 
 /**
@@ -42,12 +43,12 @@ public class DialogoLoginCrupier extends DialogoLoginGenerico{
 
     @Override
     public void mostrarError(String msj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        JOptionPane.showMessageDialog(this, msj, "Login incorrecto", JOptionPane.ERROR_MESSAGE);        
     }
 
     @Override
     public void salir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.dispose();
     }
     
 }

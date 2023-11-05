@@ -5,6 +5,7 @@ import Controladores.ControladorOperarMesaCrupier;
 import componente.PanelRuleta;
 import dominio.Crupier;
 import dominio.MecanismoSorteo;
+import dominio.TipoApuesta;
 import interfaces.Renderizable;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-
 /**
  *
  * @author digregor
@@ -21,15 +21,17 @@ import javax.swing.ListCellRenderer;
 public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperarMesaCrupier {
 
     private ControladorOperarMesaCrupier controlador;
+    private TipoApuesta[] tipoApuesta;
     int apuestaRojo = 0;
 
     /**
      * Creates new form NewJFrame
      */
-    public OperarMesaCrupier(Crupier crupier) {
-        initComponents();
+    public OperarMesaCrupier(Crupier crupier, TipoApuesta[] tiposApuesta) {
         this.controlador = new ControladorOperarMesaCrupier(this, crupier);
-        cbEfectos.setRenderer(new Detalle());
+        this.tipoApuesta = tiposApuesta;
+        initComponents();
+        inhabilitarComponentes();
         inicializar();
     }
 
@@ -111,6 +113,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         cbEfectos.setToolTipText("");
 
         btnLanzarPagar.setText("Lanzar/Pagar");
+        btnLanzarPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLanzarPagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,6 +218,10 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMontoMesaActionPerformed
 
+    private void btnLanzarPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanzarPagarActionPerformed
+        lanzarPagar();
+    }//GEN-LAST:event_btnLanzarPagarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarMesa;
     private javax.swing.JButton btnLanzarPagar;
@@ -232,19 +243,10 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
-        r.setVisible(PanelRuleta.MAYOR, false);
-        r.setVisible(PanelRuleta.MENOR, false);
-        r.setVisible(PanelRuleta.COMPUESTO, false);
-        r.setVisible(PanelRuleta.PRIMO, false);
-        r.setVisible(PanelRuleta.IMPAR, false);
-        r.setVisible(PanelRuleta.PAR, false);
-        r.setVisible(PanelRuleta.PRIMERA_COLUMNA, false);
-        r.setVisible(PanelRuleta.SEGUNDA_COLUMNA, false);
-        r.setVisible(PanelRuleta.TERCERA_COLUMNA, false);
-
+        habilitarComponentes();
         controlador.obtenerDatos();
     }
-    
+
     @Override
     public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa, ArrayList<MecanismoSorteo> efectos) {
         txtMontoMesa.setText(saldoMesa + "");
@@ -256,7 +258,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         }
         cbEfectos.setModel(model);
     }
-    
+
+    private void lanzarPagar() {
+        controlador.lanzarPagar();
+    }
+
     private class Detalle implements ListCellRenderer<Renderizable> {
 
         @Override
@@ -265,12 +271,52 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
             label.setText(value.getRenderDetail());
             return label;
         }
+    }
 
+    private void inhabilitarComponentes() {
+        r.setVisible(PanelRuleta.MAYOR, false);
+        r.setVisible(PanelRuleta.MENOR, false);
+        r.setVisible(PanelRuleta.COMPUESTO, false);
+        r.setVisible(PanelRuleta.PRIMO, false);
+        r.setVisible(PanelRuleta.IMPAR, false);
+        r.setVisible(PanelRuleta.PAR, false);
+        r.setVisible(PanelRuleta.PRIMERA_COLUMNA, false);
+        r.setVisible(PanelRuleta.SEGUNDA_COLUMNA, false);
+        r.setVisible(PanelRuleta.TERCERA_COLUMNA, false);
+        r.setVisible(PanelRuleta.ROJO, false);
+        r.setVisible(PanelRuleta.NEGRO, false);
+        r.setVisible(PanelRuleta.PRIMERA_DOCENA, false);
+        r.setVisible(PanelRuleta.SEGUNDA_DOCENA, false);
+        r.setVisible(PanelRuleta.TERCERA_DOCENA, false);
+    }
+
+    private void habilitarComponentes() {
+        for (TipoApuesta ta : tipoApuesta) {
+            switch (ta.getCasillero()) {
+                case "Rojo":
+                    r.setVisible(PanelRuleta.ROJO, true);
+                    break;
+                case "Negro":
+                    r.setVisible(PanelRuleta.NEGRO, true);
+                    break;
+                case "Primera Docena":
+                    r.setVisible(PanelRuleta.PRIMERA_DOCENA, true);
+                    break;
+                case "Segunda Docena":
+                    r.setVisible(PanelRuleta.SEGUNDA_DOCENA, true);
+                    break;
+                case "Tercera Docena":
+                    r.setVisible(PanelRuleta.TERCERA_DOCENA, true);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     @Override
     public void salir() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }  
-       
+    }
+
 }

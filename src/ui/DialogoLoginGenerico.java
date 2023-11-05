@@ -5,6 +5,8 @@
 package ui;
 
 import Controladores.ControladorLogin;
+import dominio.Jugador;
+import dominio.Usuario;
 import interfaces.VistaLogin;
 
 
@@ -109,6 +111,10 @@ public abstract class DialogoLoginGenerico extends javax.swing.JDialog implement
         this.controlador.loginUsuario(cedula, password);
     }
 
+    @Override
+    public void ejecutarLogin(Usuario usu) {
+        new UnirseAMesaJugador((java.awt.Frame) this.getParent(), false, (Jugador) usu).setVisible(true);
+    }
     public ControladorLogin getControlador() {
         return controlador;
     }

@@ -2,6 +2,7 @@
 package dominio;
 
 
+
 public class Jugador extends Usuario{
     
     private int saldoInicial;

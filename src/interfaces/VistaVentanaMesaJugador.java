@@ -4,12 +4,14 @@
  */
 package interfaces;
 
-/**
- *
- * @author Mauro
- */
-public interface VistaJugarJugador {
+import dominio.Ronda;
+import java.util.ArrayList;
+
+
+public interface VistaVentanaMesaJugador {
     
+    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa);
+    public void mostrarInfoRonda(ArrayList<Ronda> rondasDelJugador);
     public void salir();
     
 }

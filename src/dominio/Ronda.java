@@ -62,5 +62,54 @@ public class Ronda {
     public int totalDeApuestas(){
         return apuestas.size();
     };
+    
+    public int montoTotalApostadoEnLaRonda(Jugador jugador){
+        
+        int montoTotal=0;
+        
+        for(Apuesta a: apuestas){
+            
+           if(a.getJugador().equals(jugador)){
+               montoTotal+= a.getMontoTotal();
+                       
+           } 
+        
+        }
+        return montoTotal;
+    }
+    
+    public int montoTotalPerdidoEnLaRonda(Jugador jugador){
+        
+        int montoTotal=0;
+        
+        for(Apuesta a: apuestas){
+            
+           if(a.getJugador().equals(jugador) && !a.getApuestaGanada()){
+               montoTotal+= a.getMontoTotal();
+                       
+           } 
+        
+        }
+        return montoTotal;
+    }
+    
+    public int montoTotalGanadoEnLaRonda(Jugador jugador){
+        
+        int montoTotal=0;
+        
+        for(Apuesta a: apuestas){
+            
+           if(a.getJugador().equals(jugador) && a.getApuestaGanada()){
+               montoTotal+= a.getMontoTotal();
+                       
+           } 
+        
+        }
+        return montoTotal;
+    }
+    
+    public int montoBalanceEnLaRonda(Jugador jugador){
+        return montoTotalGanadoEnLaRonda(jugador) - montoTotalPerdidoEnLaRonda(jugador);
+    }
 }
 

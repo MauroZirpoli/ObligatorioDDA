@@ -34,7 +34,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        r = new componente.PanelRuleta();
         jLabel1 = new javax.swing.JLabel();
         txtMontoMesa = new javax.swing.JTextField();
         lbPesos = new javax.swing.JLabel();
@@ -110,7 +109,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(r, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +150,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                                         .addGap(55, 55, 55)
                                         .addComponent(btnCerrarMesa))
                                     .addComponent(btnLanzarPagar))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 52, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -191,9 +189,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLanzarPagar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,7 +215,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private javax.swing.JLabel lbPesos2;
     private javax.swing.JLabel lbRonda;
     private javax.swing.JLabel lbRuleta;
-    private componente.PanelRuleta r;
     private javax.swing.JTextField txtApuestas;
     private javax.swing.JTextField txtBarra;
     private javax.swing.JTextField txtMonto;
@@ -248,6 +243,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
 
     @Override
     public void salir() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

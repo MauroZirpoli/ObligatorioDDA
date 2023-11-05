@@ -9,10 +9,12 @@ public class Apuesta {
     private boolean apuestaGanada;
     private ArrayList<Ficha> fichas = new ArrayList<>();
     private TipoApuesta tipoApuesta;
+    private Jugador jugador;
 
     public void agregarFicha(Ficha ficha, TipoApuesta tipoApuesta) {
         this.tipoApuesta=tipoApuesta;
         this.apuestaGanada=false;
+        this.jugador=jugador;
         fichas.add(ficha);
         ficha.setApuesta(this);
     }
@@ -36,11 +38,15 @@ public class Apuesta {
     public int getMontoTotal() {
         return montoTotal;
     }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
     
     
     /**public int gananciaDeLaApuesta(){
         return montoTotal(/*int cantidad) * tipoApuesta.
     }*/
     
-
+    
 }

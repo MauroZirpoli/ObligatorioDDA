@@ -1,18 +1,17 @@
-
 package dominio;
 
 import java.util.ArrayList;
 
 public class Mesa {
-    
+
     private ArrayList<Ronda> rondas = new ArrayList<>();
     private ArrayList<Apuesta> apuestas = new ArrayList<>();
     private ArrayList<TipoApuesta> tiposApuesta = new ArrayList<>();
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Crupier crupier;
     private boolean disponible;
-    private int balanceSaldo=0;
-    private int numeroDeMesa=0;
+    private int balanceSaldo = 0;
+    private int numeroDeMesa = 0;
 
     public Mesa(ArrayList<Ronda> rondas, ArrayList<Apuesta> apuestas, ArrayList<TipoApuesta> tiposApuesta, ArrayList<Jugador> jugadores, Crupier crupier) {
         this.rondas = rondas;
@@ -20,15 +19,15 @@ public class Mesa {
         this.tiposApuesta = tiposApuesta;
         this.jugadores = jugadores;
         this.crupier = crupier;
-        this.disponible=false;
+        this.disponible = false;
         numeroDeMesa++;
     }
 
     public Mesa() {
-        
+
     }
 
-    public int getNumeroDeMesa(){
+    public int getNumeroDeMesa() {
         return numeroDeMesa;
     }
 
@@ -75,8 +74,6 @@ public class Mesa {
     public boolean isDisponible() {
         return disponible;
     }
-    
-    
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
@@ -85,59 +82,62 @@ public class Mesa {
     public int getBalanceSaldo() {
         return balanceSaldo;
     }
-    
-    public int cantidadDeApuestas(){
+
+    public int cantidadDeApuestas() {
         return apuestas.size();
-    };
+    }
+
+    ;
         
-    public int montoTotalDeLasApuestas(){
-        int monto=0;
-        
-        for(Apuesta a: apuestas){
+    public int montoTotalDeLasApuestas() {
+        int monto = 0;
+
+        for (Apuesta a : apuestas) {
             //monto+= a.montoTotal(cantidad); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
         }
         return monto;
-    };
+    }
+
+    ;
     
-    public int montoTotalApuestasPerdidasRecoleccion(){
-        int monto=0;
-        
-        for(Apuesta a: apuestas){
-            if(!a.getApuestaGanada()){
+    public int montoTotalApuestasPerdidasRecoleccion() {
+        int monto = 0;
+
+        for (Apuesta a : apuestas) {
+            if (!a.getApuestaGanada()) {
                 //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
             }
         }
-        
+
         return monto;
     }
-    
-    public int montoTotalApuestasPagadasLiquidacion(){
-        int monto=0;
-        
-        for(Apuesta a: apuestas){
-            if(a.getApuestaGanada()){
+
+    public int montoTotalApuestasPagadasLiquidacion() {
+        int monto = 0;
+
+        for (Apuesta a : apuestas) {
+            if (a.getApuestaGanada()) {
                 //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
             }
         }
-        
+
         return monto;
     }
-    
-    
-    public int totalDeApuestasPorRonda(){
+
+    public int totalDeApuestasPorRonda() {
         int apuestasPorRonda;
         Ronda ronda = rondas.get(rondas.size() - 1);
         apuestasPorRonda = ronda.totalDeApuestas();
         return apuestasPorRonda;
     }
-    
-    public int ultimoNumeroSorteado(){
+
+    public int ultimoNumeroSorteado() {
         int ultimoNumeroSorteado;
         Ronda ronda = rondas.get(rondas.size() - 1);
         ultimoNumeroSorteado = ronda.getBola().getNumero();
         return ultimoNumeroSorteado;
     }
-    
+
     public void calcularBalanceSaldo() {
         for (Apuesta a : apuestas) {
             if (a.getApuestaGanada()) {
@@ -147,17 +147,25 @@ public class Mesa {
             }
         }
     }
-    
-    public ArrayList<Integer> ultimosSeisNumerosSorteados(){
+
+    public ArrayList<Integer> ultimosSeisNumerosSorteados() {
         ArrayList<Integer> ultimosNumeros = new ArrayList<>();
-        
+
         int inicio = Math.max(0, rondas.size() - 6);
-        
-        for(int x = inicio; x < rondas.size(); x++){
+
+        for (int x = inicio; x < rondas.size(); x++) {
             Ronda r = rondas.get(x);
             ultimosNumeros.add(r.getBola().getNumero());
         }
-        
+
         return ultimosNumeros;
+    }
+
+    public void agregarJugador(Jugador jugador) {
+        jugadores.add(jugador);
+    }
+
+    public boolean jugadorEstaEnMesa(Jugador jugador) {
+        return jugadores.contains(jugador);
     }
 }

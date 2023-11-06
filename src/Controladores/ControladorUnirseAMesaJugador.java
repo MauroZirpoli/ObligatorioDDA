@@ -5,6 +5,7 @@
 package Controladores;
 
 import dominio.Jugador;
+import dominio.Mesa;
 import logica.Fachada;
 import interfaces.VistaUnirseAMesaJugador;
 import ui.VentanaMesaJugador;
@@ -23,10 +24,7 @@ public class ControladorUnirseAMesaJugador /*implements Observador*/{
         this.vista.listarMesasDisponibles(Fachada.getInstancia().getMesasDisponibles());
     }
     
-    public void ejecutarCUJugarJugador(){
-        new VentanaMesaJugador();
-    }
-    
+     
     public void cerrar() {
         if (vista.confirmar("Confirma que desea salir", "Unirse a Mesa Jugador")) {
             usuarioJugador.setLogueado(false);

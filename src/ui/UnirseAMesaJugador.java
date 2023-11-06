@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
  *
  * @author Mauro
  */
-public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnirseAMesaJugador{
+public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnirseAMesaJugador {
 
-
-private ControladorUnirseAMesaJugador controlador;
+    private ControladorUnirseAMesaJugador controlador;
+    private Jugador jugador;
 
     public UnirseAMesaJugador(java.awt.Frame parent, boolean modal, Jugador jugador) {
         super(parent, modal);
@@ -28,7 +28,6 @@ private ControladorUnirseAMesaJugador controlador;
         this.controlador = new ControladorUnirseAMesaJugador(this, jugador);
         //inicializar();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -124,18 +123,29 @@ private ControladorUnirseAMesaJugador controlador;
 
     @Override
     public void listarMesasDisponibles(ArrayList<Mesa> mesasDisponibles) {
-        
+
         DefaultListModel<Mesa> list = new DefaultListModel<>();
-        
-        for(Mesa m: mesasDisponibles){
+
+        for (Mesa m : mesasDisponibles) {
             list.addElement(m);
         }
         IListMesa.setModel(list);
     }
 
+    private void unirse() {
+        Mesa mesaSeleccionada = IListMesa.getSelectedValue();
+        if (mesaSeleccionada != null) {
+            if (!mesaSeleccionada.jugadorEstaEnMesa(jugador)) {
+                mesaSeleccionada.agregarJugador(jugador);
+                new VentanaMesaJugador(jugador, mesaSeleccionada).setVisible(true);
+            }
+            //ToDo: El jugador ya se ha unido a la mesa. Mensaje “El jugador ya participa de esta mesa.”   
+        }
+    }
+
     @Override
     public boolean confirmar(String mensaje, String title) {
-        return JOptionPane.showConfirmDialog(this, mensaje, title, JOptionPane.YES_NO_OPTION) == 0;    
+        return JOptionPane.showConfirmDialog(this, mensaje, title, JOptionPane.YES_NO_OPTION) == 0;
     }
 
     @Override

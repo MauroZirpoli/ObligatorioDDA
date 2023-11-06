@@ -3,6 +3,8 @@ package ui;
 import Controladores.ControladorOperarMesaCrupier;
 import Controladores.ControladorVentanaMesaJugador;
 import componente.PanelRuleta;
+import dominio.Jugador;
+import dominio.Mesa;
 import dominio.Ronda;
 import interfaces.VistaVentanaMesaJugador;
 import java.util.ArrayList;
@@ -15,14 +17,24 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVentanaMesaJugador{
 
     private ControladorVentanaMesaJugador controlador;
+    private Mesa mesa;
+    private Jugador jugador;
+
     //int apuestaRojo = 0;
 
     /**
      * Creates new form NewJFrame
      */
-    public VentanaMesaJugador() {
+    public VentanaMesaJugador(Jugador jugador, Mesa mesa) {
+        this.controlador = new ControladorVentanaMesaJugador(this, jugador);
+        
+        this.mesa = mesa;
+        this.jugador = jugador;
+
         initComponents();
+        //inhabilitarComponentes();
         inicializar();
+
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

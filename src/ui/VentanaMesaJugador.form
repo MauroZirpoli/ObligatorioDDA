@@ -47,8 +47,16 @@
                       <EmptySpace min="-2" pref="363" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="695" max="32767" attributes="0"/>
+                    <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                        <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                        <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="r" pref="792" max="32767" attributes="0"/>
+                    </Group>
+                    <EmptySpace max="-2" attributes="0"/>
+                    <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                    <EmptySpace pref="695" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -60,8 +68,8 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbPesos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                  <Component id="lbPesos" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtSaldoJugador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbRuleta" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
@@ -70,14 +78,16 @@
                       <Component id="txtRonda" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="225" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="r" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="129" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="componente.PanelRuleta" name="r">
+    </Component>
     <Component class="javax.swing.JLabel" name="lbPesos">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

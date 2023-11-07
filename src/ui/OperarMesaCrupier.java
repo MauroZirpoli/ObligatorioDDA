@@ -265,6 +265,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         controlador.lanzarPagar();
     }
 
+    @Override
+    public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos) {
+        //ToDo: La lista de ultimos lanzamientos esta traida pero falta agregarla en el diseño
+    }
+
     private class Detalle implements ListCellRenderer<Renderizable> {
 
         @Override

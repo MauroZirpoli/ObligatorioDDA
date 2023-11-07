@@ -50,6 +50,10 @@ public class ControladorOperarMesaCrupier /*implements Observador*/ {
     public void listarJugadoresConSuSaldo(){
         this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
     }
+    
+    public void ultimosLanzamientos(){
+        this.vista.ultimosLanzamientos(Fachada.getInstancia().buscarMesa(mesaAsignada).ultimosSeisNumerosSorteados());
+    }
 
     public void cerrarMesa() {
         //liquidar mesa (pagar)

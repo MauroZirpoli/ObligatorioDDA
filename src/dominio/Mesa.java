@@ -85,45 +85,8 @@ public class Mesa {
 
     public int cantidadDeApuestas() {
         return apuestas.size();
-    }
-
-    ;
-        
-    public int montoTotalDeLasApuestas() {
-        int monto = 0;
-
-        for (Apuesta a : apuestas) {
-            //monto+= a.montoTotal(cantidad); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
-        }
-        return monto;
-    }
-
-    ;
+    };
     
-    public int montoTotalApuestasPerdidasRecoleccion() {
-        int monto = 0;
-
-        for (Apuesta a : apuestas) {
-            if (!a.getApuestaGanada()) {
-                //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
-            }
-        }
-
-        return monto;
-    }
-
-    public int montoTotalApuestasPagadasLiquidacion() {
-        int monto = 0;
-
-        for (Apuesta a : apuestas) {
-            if (a.getApuestaGanada()) {
-                //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
-            }
-        }
-
-        return monto;
-    }
-
     public int totalDeApuestasPorRonda() {
         int apuestasPorRonda;
         Ronda ronda = rondas.get(rondas.size() - 1);

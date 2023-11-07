@@ -6,6 +6,7 @@ import componente.PanelRuleta;
 import dominio.Crupier;
 import dominio.Jugador;
 import dominio.MecanismoSorteo;
+import dominio.Ronda;
 import dominio.TipoApuesta;
 import interfaces.Renderizable;
 import java.awt.Component;
@@ -336,6 +337,24 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
             String nombreJugador = jugador.getNombre(); 
             double saldo = jugador.getSaldoInicial(); 
             modelo.addRow(new Object[]{nombreJugador, saldo});
+        }
+        
+    }
+    
+    @Override
+    public void listarRondasConSuInformacion(ArrayList<Ronda> rondas) {
+        
+        DefaultTableModel modelo = (DefaultTableModel) Tabla1.getModel();
+        modelo.setRowCount(0); // Limpia todas las filas existentes en la tabla
+
+        for (Ronda r : rondas) {
+            int numeroRonda = r.getNumero(); 
+            //int balanceAnteriorAlSorteo = r.getBalanceAnteriorAlSorteo();
+            int montoTotalDeApuestas = r.montoTotalDeLasApuestas(); 
+            int montoTotalApuestasPerdidas = r.montoTotalApuestasPerdidasRecoleccion();
+            int montoTotalDeApuestasPagadas = r.montoTotalApuestasPagadasLiquidacion();
+            int balancePosteriorAlSorteo = r.getBalanceSaldo();
+            modelo.addRow(new Object[]{numeroRonda, /*balanceAnteriorAlSorteo,*/ montoTotalDeApuestas, montoTotalApuestasPerdidas, montoTotalDeApuestasPagadas, balancePosteriorAlSorteo });
         }
         
     }

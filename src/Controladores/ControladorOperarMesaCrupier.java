@@ -8,6 +8,7 @@ import dominio.Crupier;
 import dominio.Jugador;
 import dominio.MecanismoSorteo;
 import dominio.Mesa;
+import dominio.Ronda;
 import interfaces.VistaOperarMesaCrupier;
 import java.util.ArrayList;
 import logica.Fachada;
@@ -49,6 +50,10 @@ public class ControladorOperarMesaCrupier /*implements Observador*/ {
     
     public void listarJugadoresConSuSaldo(){
         this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
+    }
+    
+    public void listarRondasConSuInformacion(ArrayList<Ronda> rondas){
+        this.vista.listarRondasConSuInformacion(Fachada.getInstancia().buscarMesa(mesaAsignada).getRondas());
     }
     
     public void ultimosLanzamientos(){

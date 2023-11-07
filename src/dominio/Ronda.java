@@ -9,6 +9,7 @@ public class Ronda {
     private Mesa mesa;
     private ArrayList<Apuesta> apuestas;
     private MecanismoSorteo mecanismoSorteo;
+    private int balanceSaldo;
 
     public Ronda(int numero, Bola bola, Mesa mesa, ArrayList<Apuesta> apuestas, MecanismoSorteo mecanismoSorteo) {
         //this.numero = numero;
@@ -16,6 +17,7 @@ public class Ronda {
         this.mesa = mesa;
         this.apuestas = apuestas;
         this.mecanismoSorteo = mecanismoSorteo;
+        this.balanceSaldo=0;
         numero++;
     }
 
@@ -58,6 +60,10 @@ public class Ronda {
     public void setMecanismoSorteo(MecanismoSorteo mecanismoSorteo) {
         this.mecanismoSorteo = mecanismoSorteo;
     }
+
+    public int getBalanceSaldo() {
+        return balanceSaldo;
+    } 
     
     public int totalDeApuestas(){
         return apuestas.size();
@@ -110,6 +116,51 @@ public class Ronda {
     
     public int montoBalanceEnLaRonda(Jugador jugador){
         return montoTotalGanadoEnLaRonda(jugador) - montoTotalPerdidoEnLaRonda(jugador);
+    }
+    
+    //Para Mesa de Crupier:
+    
+    public int montoTotalDeLasApuestas() {
+        int monto = 0;
+
+        for (Apuesta a : apuestas) {
+            //monto+= a.montoTotal(cantidad); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
+        }
+        return monto;
+    };
+    
+    public int montoTotalApuestasPerdidasRecoleccion() {
+        int monto = 0;
+
+        for (Apuesta a : apuestas) {
+            if (!a.getApuestaGanada()) {
+                //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
+            }
+        }
+
+        return monto;
+    }
+
+    public int montoTotalApuestasPagadasLiquidacion() {
+        int monto = 0;
+
+        for (Apuesta a : apuestas) {
+            if (a.getApuestaGanada()) {
+                //monto += a.getMontoTotal(); //ToDo: Nose como hacer para traerle la cantidad de fichas que se pusieron en cada apuesta
+            }
+        }
+
+        return monto;
+    }
+    
+    public void calcularBalanceSaldo() {
+        for (Apuesta a : apuestas) {
+            if (a.getApuestaGanada()) {
+                balanceSaldo += a.calcularPago();
+            } else {
+                balanceSaldo -= a.getMontoTotal();
+            }
+        }
     }
 }
 

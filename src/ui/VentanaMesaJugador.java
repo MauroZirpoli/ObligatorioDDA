@@ -137,6 +137,12 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
 
     @Override
     public void salir() {
+        dispose();
+    }
+    
+    public void abandonar(){
+        mesa.eliminarJugador(jugador);
+        salir();
     }
 
     @Override

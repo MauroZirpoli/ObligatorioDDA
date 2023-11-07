@@ -168,4 +168,8 @@ public class Mesa {
     public boolean jugadorEstaEnMesa(Jugador jugador) {
         return jugadores.contains(jugador);
     }
+    
+    public void eliminarJugador(Jugador jugador) {
+        jugadores.remove(jugador);
+    }
 }

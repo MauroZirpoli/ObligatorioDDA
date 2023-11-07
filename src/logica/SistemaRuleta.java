@@ -44,4 +44,13 @@ class SistemaRuleta {
         return rondasParticipadas;
     }
     
+    public Mesa buscarMesa(Mesa mesa) {
+    for (Mesa m : mesas) {
+        if (m.equals(mesa)) {
+            return m; 
+        }
+    }
+    return null; 
+}
+    
 }

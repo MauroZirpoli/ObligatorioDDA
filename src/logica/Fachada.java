@@ -82,8 +82,12 @@ public class Fachada {
         return sistemaMecanismo.getEfectos();
     }
     
-    void agregar(MecanismoSorteo efecto) {
+    public void agregar(MecanismoSorteo efecto) {
         sistemaMecanismo.agregar(efecto);
+    }
+    
+    public Mesa buscarMesa(Mesa mesa){
+        return sistemaRuleta.buscarMesa(mesa);
     }
       
 }

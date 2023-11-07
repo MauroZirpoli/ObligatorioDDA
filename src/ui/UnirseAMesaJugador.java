@@ -33,20 +33,16 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnUnirse = new javax.swing.JButton();
-        btnLogOff = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         IListMesa = new javax.swing.JList<>();
         titulo = new javax.swing.JTextField();
         subTitulo = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnUnirse = new javax.swing.JButton();
+        btnLogOff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        btnUnirse.setText("Unirse");
-
-        btnLogOff.setText("Log Off");
 
         jScrollPane1.setViewportView(IListMesa);
 
@@ -67,23 +63,37 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        btnUnirse.setText("Unirse");
+        btnUnirse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnirseActionPerformed(evt);
+            }
+        });
+
+        btnLogOff.setText("Log Off");
+        btnLogOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titulo)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(subTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(93, 93, 93)
-                            .addComponent(btnUnirse)
-                            .addGap(49, 49, 49)
-                            .addComponent(btnLogOff))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(subTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(63, 63, 63)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btnUnirse)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnLogOff)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -108,6 +118,14 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUnirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnirseActionPerformed
+        unirse();
+    }//GEN-LAST:event_btnUnirseActionPerformed
+
+    private void btnLogOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOffActionPerformed
+        salir();
+    }//GEN-LAST:event_btnLogOffActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -150,6 +168,7 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
 
     @Override
     public void salir() {
+        jugador.setLogueado(false);
         dispose();
     }
 

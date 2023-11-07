@@ -317,4 +317,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     public void salir() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    //El cambio se hizo bien
 }

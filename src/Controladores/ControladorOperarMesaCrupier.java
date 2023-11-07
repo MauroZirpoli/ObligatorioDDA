@@ -5,6 +5,7 @@
 package Controladores;
 
 import dominio.Crupier;
+import dominio.Jugador;
 import dominio.MecanismoSorteo;
 import dominio.Mesa;
 import interfaces.VistaOperarMesaCrupier;
@@ -44,6 +45,10 @@ public class ControladorOperarMesaCrupier /*implements Observador*/ {
             mesaAsignada.setDisponible(true);
             //deshabilitar boton cerrar mesa
         }
+    }
+    
+    public void listarJugadoresConSuSaldo(){
+        this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
     }
 
     public void cerrarMesa() {

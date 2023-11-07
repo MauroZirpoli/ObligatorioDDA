@@ -4,6 +4,7 @@
  */
 package interfaces;
 
+import dominio.Jugador;
 import dominio.MecanismoSorteo;
 import java.util.ArrayList;
 
@@ -13,5 +14,6 @@ import java.util.ArrayList;
  */
 public interface VistaOperarMesaCrupier {
     public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa, ArrayList<MecanismoSorteo> efectos);
+    public void listarJugadoresConSuSaldo(ArrayList<Jugador> jugadores);
     public void salir();
 }

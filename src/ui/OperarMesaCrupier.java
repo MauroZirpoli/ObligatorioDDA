@@ -4,6 +4,7 @@ import interfaces.VistaOperarMesaCrupier;
 import Controladores.ControladorOperarMesaCrupier;
 import componente.PanelRuleta;
 import dominio.Crupier;
+import dominio.Jugador;
 import dominio.MecanismoSorteo;
 import dominio.TipoApuesta;
 import interfaces.Renderizable;
@@ -12,7 +13,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTable;
 import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -315,8 +318,21 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
 
     @Override
     public void salir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        dispose();
     }
     
-    //El cambio se hizo bien
+    @Override
+    public void listarJugadoresConSuSaldo(ArrayList<Jugador> jugadores) {
+
+        DefaultTableModel modelo = (DefaultTableModel) Tabla2.getModel();
+        modelo.setRowCount(0); // Limpia todas las filas existentes en la tabla
+
+        for (Jugador jugador : jugadores) {
+            String nombreJugador = jugador.getNombre(); 
+            double saldo = jugador.getSaldoInicial(); 
+            modelo.addRow(new Object[]{nombreJugador, saldo});
+        }
+        
+    }
+
 }

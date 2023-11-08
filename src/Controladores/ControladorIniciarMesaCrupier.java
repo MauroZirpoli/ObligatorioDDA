@@ -4,6 +4,8 @@
  */
 package Controladores;
 
+import Observer.Observable;
+import Observer.Observador;
 import dominio.Crupier;
 import dominio.Mesa;
 import dominio.TipoApuesta;
@@ -12,7 +14,7 @@ import interfaces.VistaIniciarMesaCrupier;
 import java.util.ArrayList;
 
 
-public class ControladorIniciarMesaCrupier /*implements Observador*/{
+public class ControladorIniciarMesaCrupier implements Observador{
     
     VistaIniciarMesaCrupier vista;
     Crupier usuarioCrupier;
@@ -34,6 +36,11 @@ public class ControladorIniciarMesaCrupier /*implements Observador*/{
             usuarioCrupier.setLogueado(false);
             vista.salir();
         }
+    }
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     

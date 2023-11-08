@@ -26,7 +26,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
      * Creates new form NewJFrame
      */
     public VentanaMesaJugador(Jugador jugador, Mesa mesa) {
-        this.controlador = new ControladorVentanaMesaJugador(this, jugador);
+        this.controlador = new ControladorVentanaMesaJugador(this, jugador, mesa);
         
         this.mesa = mesa;
         this.jugador = jugador;
@@ -211,6 +211,11 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
 */
     
         
+    }
+
+    @Override
+    public void ultimoNumeroSorteado(int ultimoNumero) {
+        controlador.ultimoNumeroSorteado();
     }
 
 

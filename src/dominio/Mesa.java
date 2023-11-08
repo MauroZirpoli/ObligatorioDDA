@@ -1,8 +1,9 @@
 package dominio;
 
+import Observer.Observable;
 import java.util.ArrayList;
 
-public class Mesa {
+public class Mesa extends Observable{
 
     private ArrayList<Ronda> rondas = new ArrayList<>();
     private ArrayList<Apuesta> apuestas = new ArrayList<>();
@@ -86,6 +87,16 @@ public class Mesa {
     public int cantidadDeApuestas() {
         return apuestas.size();
     };
+    
+    public boolean agregarRonda(Ronda r){
+        
+        if(r != null){
+            rondas.add(r);
+            notificar(Observable.Evento.CARGAR_RONDA);
+            return true;
+        }
+        return false;
+    }
     
     public int totalDeApuestasPorRonda() {
         int apuestasPorRonda;

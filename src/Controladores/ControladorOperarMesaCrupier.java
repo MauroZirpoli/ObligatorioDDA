@@ -4,20 +4,19 @@
  */
 package Controladores;
 
+import Observer.Observable;
+import Observer.Observador;
 import dominio.Crupier;
-import dominio.Jugador;
+
 import dominio.MecanismoSorteo;
 import dominio.Mesa;
-import dominio.Ronda;
+
 import interfaces.VistaOperarMesaCrupier;
 import java.util.ArrayList;
 import logica.Fachada;
 
-/**
- *
- * @author Mauro
- */
-public class ControladorOperarMesaCrupier /*implements Observador*/ {
+
+public class ControladorOperarMesaCrupier implements Observador {
 
     VistaOperarMesaCrupier vista;
     Crupier usuarioCrupier;
@@ -52,18 +51,34 @@ public class ControladorOperarMesaCrupier /*implements Observador*/ {
         this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
     }
     
-    public void listarRondasConSuInformacion(ArrayList<Ronda> rondas){
+    public void listarRondasConSuInformacion(){
         this.vista.listarRondasConSuInformacion(Fachada.getInstancia().buscarMesa(mesaAsignada).getRondas());
     }
     
     public void ultimosLanzamientos(){
         this.vista.ultimosLanzamientos(Fachada.getInstancia().buscarMesa(mesaAsignada).ultimosSeisNumerosSorteados());
     }
+    
+    public void ultimoNumeroSorteado(){
+        this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
+    }
 
     public void cerrarMesa() {
         //liquidar mesa (pagar)
         // desloguear jug
-        // desloguear el crupier
+          // desloguear el crupier
     }
 
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        
+        if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
+            
+            obtenerDatos();
+            listarJugadoresConSuSaldo();
+            listarRondasConSuInformacion(); 
+            ultimosLanzamientos();
+            ultimoNumeroSorteado();
+        }
+    }
 }

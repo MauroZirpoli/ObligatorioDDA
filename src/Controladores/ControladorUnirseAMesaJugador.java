@@ -4,13 +4,15 @@
  */
 package Controladores;
 
+import Observer.Observable;
+import Observer.Observador;
 import dominio.Jugador;
 import dominio.Mesa;
 import logica.Fachada;
 import interfaces.VistaUnirseAMesaJugador;
 import ui.VentanaMesaJugador;
 
-public class ControladorUnirseAMesaJugador /*implements Observador*/{
+public class ControladorUnirseAMesaJugador implements Observador{
     
     VistaUnirseAMesaJugador vista;
     Jugador usuarioJugador;
@@ -30,6 +32,11 @@ public class ControladorUnirseAMesaJugador /*implements Observador*/{
             usuarioJugador.setLogueado(false);
             vista.salir();
         }
+    }
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

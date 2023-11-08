@@ -18,5 +18,6 @@ public interface VistaOperarMesaCrupier {
     public void listarJugadoresConSuSaldo(ArrayList<Jugador> jugadores);
     public void listarRondasConSuInformacion(ArrayList<Ronda> rondas);
     public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos);
+    public void ultimoNumeroSorteado(int ultimoNumero);
     public void salir();
 }

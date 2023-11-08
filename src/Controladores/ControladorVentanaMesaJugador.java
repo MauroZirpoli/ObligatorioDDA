@@ -1,6 +1,8 @@
 package Controladores;
 
 
+import Observer.Observable;
+import Observer.Observador;
 import dominio.Jugador;
 import dominio.Mesa;
 import dominio.Ronda;
@@ -9,14 +11,16 @@ import java.util.ArrayList;
 import logica.Fachada;
 
 
-public class ControladorVentanaMesaJugador /*implements Observador*/{
+public class ControladorVentanaMesaJugador implements Observador{
       
     VistaVentanaMesaJugador vista;
     Jugador usuarioJugador;
+    //Mesa mesaAsignada;
 
-    public ControladorVentanaMesaJugador(VistaVentanaMesaJugador vista, Jugador usuarioJugador) {
+    public ControladorVentanaMesaJugador(VistaVentanaMesaJugador vista, Jugador usuarioJugador/*, Mesa mesaAsignada*/) {
         this.vista = vista;
         this.usuarioJugador = usuarioJugador;
+        //this.mesaAsignada=mesaAsignada;
     }
 
     public void obtenerDatos() {
@@ -33,6 +37,21 @@ public class ControladorVentanaMesaJugador /*implements Observador*/{
         this.usuarioJugador.getNombre();
         
         ArrayList<Ronda> rondasDelJugador = Fachada.getInstancia().obtenerRondasDeJugador(usuarioJugador);
+        
+    }
+    
+    public void ultimoNumeroSorteado(){
+        this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
+    }
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        
+        if (((Observable.Evento) evento).equals(Observable.Evento.PAGAR)) {
+            
+            obtenerDatos();
+            ultimoNumeroSorteado();
+        }
         
     }
     

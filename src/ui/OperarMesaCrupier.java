@@ -248,6 +248,10 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private void inicializar() {
         habilitarComponentes();
         controlador.obtenerDatos();
+        controlador.listarJugadoresConSuSaldo();
+        controlador.ultimosLanzamientos();
+        controlador.ultimoNumeroSorteado();
+        controlador.listarRondasConSuInformacion();
     }
 
     @Override
@@ -269,6 +273,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     @Override
     public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos) {
         //ToDo: La lista de ultimos lanzamientos esta traida pero falta agregarla en el diseño
+    }
+
+    @Override
+    public void ultimoNumeroSorteado(int ultimoNumero) {
+        controlador.ultimoNumeroSorteado();
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {
@@ -346,15 +355,21 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         
         DefaultTableModel modelo = (DefaultTableModel) Tabla1.getModel();
         modelo.setRowCount(0); // Limpia todas las filas existentes en la tabla
+        
+        int balanceAnterior = 0; // Inicializa el balance anterior en 0
 
         for (Ronda r : rondas) {
             int numeroRonda = r.getNumero(); 
-            //int balanceAnteriorAlSorteo = r.getBalanceAnteriorAlSorteo();
+            //int balanceAnterior = r.getBalanceAnteriorAlSorteo();
             int montoTotalDeApuestas = r.montoTotalDeLasApuestas(); 
             int montoTotalApuestasPerdidas = r.montoTotalApuestasPerdidasRecoleccion();
             int montoTotalDeApuestasPagadas = r.montoTotalApuestasPagadasLiquidacion();
             int balancePosteriorAlSorteo = r.getBalanceSaldo();
-            modelo.addRow(new Object[]{numeroRonda, /*balanceAnteriorAlSorteo,*/ montoTotalDeApuestas, montoTotalApuestasPerdidas, montoTotalDeApuestasPagadas, balancePosteriorAlSorteo });
+            modelo.addRow(new Object[]{numeroRonda, balanceAnterior, montoTotalDeApuestas, montoTotalApuestasPerdidas, montoTotalDeApuestasPagadas, balancePosteriorAlSorteo });
+        
+            // Actualiza el balance anterior para la próxima ronda
+            balanceAnterior = balancePosteriorAlSorteo;
+
         }
         
     }

@@ -6,8 +6,12 @@ package ui;
 
 import interfaces.VistaUnirseAMesaJugador;
 import Controladores.ControladorUnirseAMesaJugador;
+import Controladores.ControladorVentanaMesaJugador;
+
 import dominio.Jugador;
 import dominio.Mesa;
+import interfaces.VistaVentanaMesaJugador;
+
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -26,7 +30,7 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
 
         initComponents();
         this.controlador = new ControladorUnirseAMesaJugador(this, jugador);
-        //inicializar();
+        inicializar();
     }
 
     @SuppressWarnings("unchecked")
@@ -138,7 +142,11 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
     private javax.swing.JTextField subTitulo;
     private javax.swing.JTextField titulo;
     // End of variables declaration//GEN-END:variables
-
+    
+    private void inicializar() {
+        controlador.listarMesasDisponibles();
+    }
+    
     @Override
     public void listarMesasDisponibles(ArrayList<Mesa> mesasDisponibles) {
 
@@ -155,6 +163,7 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         if (mesaSeleccionada != null) {
             if (!mesaSeleccionada.jugadorEstaEnMesa(jugador)) {
                 mesaSeleccionada.agregarJugador(jugador);
+                //new ControladorVentanaMesaJugador(new VistaVentanaMesaJugador,jugador, mesaSeleccionada);
                 new VentanaMesaJugador(jugador, mesaSeleccionada).setVisible(true);
             }
             //ToDo: El jugador ya se ha unido a la mesa. Mensaje “El jugador ya participa de esta mesa.”   

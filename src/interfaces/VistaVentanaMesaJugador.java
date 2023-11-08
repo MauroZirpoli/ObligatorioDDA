@@ -12,6 +12,7 @@ public interface VistaVentanaMesaJugador {
     
     public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa);
     public void mostrarInfoRonda(ArrayList<Ronda> rondasDelJugador);
+    public void ultimoNumeroSorteado(int ultimoNumero);
     public void salir();
     
 }

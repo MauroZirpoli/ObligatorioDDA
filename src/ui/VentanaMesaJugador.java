@@ -49,8 +49,6 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         jLabel1 = new javax.swing.JLabel();
         txtSaldoJugador = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().add(r);
@@ -90,21 +88,6 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         jLabel2.setText("Aplicación Jugador");
         getContentPane().add(jLabel2);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,8 +98,6 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbPesos;
     private javax.swing.JLabel lbRonda;
     private javax.swing.JLabel lbRuleta;

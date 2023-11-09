@@ -47,7 +47,7 @@ public class ControladorVentanaMesaJugador implements Observador{
     @Override
     public void notificar(Observable origen, Object evento) {
         
-        if (((Observable.Evento) evento).equals(Observable.Evento.PAGAR)) {
+        if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
             
             obtenerDatos();
             ultimoNumeroSorteado();

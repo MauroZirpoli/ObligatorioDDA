@@ -9,15 +9,18 @@ public class Ronda {
     private Mesa mesa;
     private ArrayList<Apuesta> apuestas;
     private MecanismoSorteo mecanismoSorteo;
-    private int balanceSaldo;
+    private int balanceSaldo=0;
+    private int montoTotalApostado;
 
-    public Ronda(int numero, Bola bola, Mesa mesa, ArrayList<Apuesta> apuestas, MecanismoSorteo mecanismoSorteo) {
-        //this.numero = numero;
-        this.bola = bola;
+    public Ronda(int numeroRonda, /*Bola bola,*/ int balanceSaldo,Mesa mesa,  MecanismoSorteo mecanismoSorteo, int montoTotalApostado) {
+        this.numero = numeroRonda;
+        this.balanceSaldo=balanceSaldo;
+        //this.bola=bola;
         this.mesa = mesa;
         this.apuestas = apuestas;
         this.mecanismoSorteo = mecanismoSorteo;
-        this.balanceSaldo=0;
+
+        this.montoTotalApostado=montoTotalApostado;
         numero++;
     }
 
@@ -37,6 +40,16 @@ public class Ronda {
         this.bola = bola;
     }
 
+    public int getMontoTotalApostado() {
+        return montoTotalApostado;
+    }
+
+    public void setMontoTotalApostado(int montoTotalApostado) {
+        this.montoTotalApostado = montoTotalApostado;
+    }
+    
+    
+    
     public Mesa getMesa() {
         return mesa;
     }

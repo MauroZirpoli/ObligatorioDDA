@@ -6,6 +6,7 @@ import componente.PanelRuleta;
 import dominio.Crupier;
 import dominio.Jugador;
 import dominio.MecanismoSorteo;
+import dominio.Mesa;
 import dominio.Ronda;
 import dominio.TipoApuesta;
 import interfaces.Renderizable;
@@ -314,6 +315,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     }
 
     private void lanzarPagar() {
+        agregarRonda();
         controlador.lanzarPagar();
     }
 
@@ -419,6 +421,20 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
 
         }
         
+    }
+    
+    public void agregarRonda(){
+        
+        int numeroDeRonda = Integer.parseInt(txtRonda.getText());
+        int montoTotalApostado = Integer.parseInt(txtMonto.getText());
+        int balanceSaldo = Integer.parseInt(txtMontoMesa.getText());
+        int cantidadDeApuestas = Integer.parseInt(txtApuestas.getText());
+        Mesa mesa = controlador.getMesaAsignada();
+        MecanismoSorteo mecanismo = (MecanismoSorteo) cbEfectos.getSelectedItem();
+        //int numeroSorteado = Integer.parseInt(txtNumeroSorteado.getText());
+        //ToDo: Faltaria numeroSorteadoDeLaRonda
+
+        controlador.agregarRonda(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
     }
 
 }

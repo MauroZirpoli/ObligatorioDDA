@@ -6,10 +6,12 @@ package Controladores;
 
 import Observer.Observable;
 import Observer.Observador;
+import dominio.Bola;
 import dominio.Crupier;
 
 import dominio.MecanismoSorteo;
 import dominio.Mesa;
+import dominio.Ronda;
 
 import interfaces.VistaOperarMesaCrupier;
 import java.util.ArrayList;
@@ -28,6 +30,10 @@ public class ControladorOperarMesaCrupier implements Observador {
         this.mesaAsignada = usuarioCrupier.getMesaAsignada();
     }
 
+    public Mesa getMesaAsignada() {
+        return mesaAsignada;
+    }
+
     public void obtenerDatos() {
         int saldoMesa = mesaAsignada.getBalanceSaldo();
         int numeroMesa = mesaAsignada.getNumeroDeMesa();
@@ -40,6 +46,7 @@ public class ControladorOperarMesaCrupier implements Observador {
     public void lanzarPagar() {
         if (mesaAsignada.isDisponible()) {
             mesaAsignada.setDisponible(false);
+            
             //habilitar el boton cerrar mesa
         } else {
             mesaAsignada.setDisponible(true);
@@ -80,5 +87,14 @@ public class ControladorOperarMesaCrupier implements Observador {
             ultimosLanzamientos();
             ultimoNumeroSorteado();
         }
+    }
+    
+    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, MecanismoSorteo mecanismo){
+        
+        /*Bola bola = new Bola(numeroSorteado);*/
+        
+        Ronda r = new Ronda(numeroDeRonda, balanceSaldo/*, bola*/, mesa, mecanismo, montoTotalApostado);
+        
+        Fachada.getInstancia().buscarMesa(mesaAsignada).agregarRonda(r);
     }
 }

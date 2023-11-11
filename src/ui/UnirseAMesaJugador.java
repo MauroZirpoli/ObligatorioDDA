@@ -139,7 +139,7 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         IListMesa.setModel(list);
     }
 
-    private void unirse() {
+    public void unirse() {
         Mesa mesaSeleccionada = IListMesa.getSelectedValue();
         if (mesaSeleccionada != null) {
             boolean ok = controlador.agregarJugadorAMesa(mesaSeleccionada, jugador);

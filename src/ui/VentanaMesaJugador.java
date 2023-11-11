@@ -52,29 +52,29 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().add(r);
+        getContentPane().add(r, java.awt.BorderLayout.CENTER);
 
         lbPesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Utilidades/pesos.png"))); // NOI18N
-        getContentPane().add(lbPesos);
+        getContentPane().add(lbPesos, java.awt.BorderLayout.PAGE_START);
 
         txtRonda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        getContentPane().add(txtRonda);
+        getContentPane().add(txtRonda, java.awt.BorderLayout.PAGE_END);
 
         lbRonda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbRonda.setText("Ronda #");
-        getContentPane().add(lbRonda);
+        getContentPane().add(lbRonda, java.awt.BorderLayout.LINE_END);
 
         lbRuleta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbRuleta.setText("Ruleta #");
-        getContentPane().add(lbRuleta);
+        getContentPane().add(lbRuleta, java.awt.BorderLayout.LINE_START);
 
         txtRuleta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        getContentPane().add(txtRuleta);
+        getContentPane().add(txtRuleta, java.awt.BorderLayout.CENTER);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("$ -");
-        getContentPane().add(jLabel1);
+        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
 
         txtSaldoJugador.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSaldoJugador.setForeground(new java.awt.Color(255, 51, 51));
@@ -83,11 +83,11 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                 txtSaldoJugadorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSaldoJugador);
+        getContentPane().add(txtSaldoJugador, java.awt.BorderLayout.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Aplicación Jugador");
-        getContentPane().add(jLabel2);
+        getContentPane().add(jLabel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -13,6 +13,7 @@ import interfaces.Renderizable;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTable;
@@ -70,6 +71,10 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         jTabla1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabla2 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListUltimosLanzamientos = new javax.swing.JList<>();
+        txtUltimoNumeroSorteado = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,6 +160,12 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         ));
         jScrollPane2.setViewportView(jTabla2);
 
+        jScrollPane3.setViewportView(jListUltimosLanzamientos);
+
+        txtUltimoNumeroSorteado.setEditable(false);
+
+        jLabel3.setText("Último número sorteado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,13 +212,24 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                             .addComponent(jLabel2))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 666, Short.MAX_VALUE))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(r, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(txtUltimoNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 529, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,13 +271,20 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                             .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUltimoNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(330, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,8 +304,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private javax.swing.JComboBox cbEfectos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JList<Integer> jListUltimosLanzamientos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTabla1;
     private javax.swing.JTable jTabla2;
     private javax.swing.JLabel lbApuestas;
@@ -291,6 +323,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private javax.swing.JTextField txtMontoMesa;
     private javax.swing.JTextField txtRonda;
     private javax.swing.JTextField txtRuleta;
+    private javax.swing.JTextField txtUltimoNumeroSorteado;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
@@ -317,16 +350,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private void lanzarPagar() {
         agregarRonda();
         controlador.lanzarPagar();
-    }
-
-    @Override
-    public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos) {
-        //ToDo: La lista de ultimos lanzamientos esta traida pero falta agregarla en el diseño
-    }
-
-    @Override
-    public void ultimoNumeroSorteado(int ultimoNumero) {
-        controlador.ultimoNumeroSorteado();
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {
@@ -435,6 +458,26 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         //ToDo: Faltaria numeroSorteadoDeLaRonda
 
         controlador.agregarRonda(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
+    }
+    
+    //PARTE DE ULTIMOS LANZAMIENTOS:
+    
+    @Override
+    public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos) {
+        
+        DefaultListModel<Integer> lista = new DefaultListModel<>();
+
+        for (Integer numero : ultimosLanzamientos) {
+            lista.addElement(numero);
+        }
+
+        jListUltimosLanzamientos.setModel(lista);
+        
+    }
+    
+    @Override
+    public void ultimoNumeroSorteado(int ultimoNumero) {
+        txtUltimoNumeroSorteado.setText(String.valueOf(ultimoNumero));
     }
 
 }

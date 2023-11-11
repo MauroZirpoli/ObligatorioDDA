@@ -7,12 +7,15 @@ package ui;
 import interfaces.VistaUnirseAMesaJugador;
 import Controladores.ControladorUnirseAMesaJugador;
 import Controladores.ControladorVentanaMesaJugador;
+import Exceptions.UsuariosExceptions;
 
 import dominio.Jugador;
 import dominio.Mesa;
 import interfaces.VistaVentanaMesaJugador;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -41,8 +44,6 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         IListMesa = new javax.swing.JList<>();
         titulo = new javax.swing.JTextField();
         subTitulo = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btnUnirse = new javax.swing.JButton();
         btnLogOff = new javax.swing.JButton();
 
@@ -53,19 +54,6 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         titulo.setText("Aplicacion Jugador - Unirse a una Mesa");
 
         subTitulo.setText("Mesas Abiertas:");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
 
         btnUnirse.setText("Unirse");
         btnUnirse.addActionListener(new java.awt.event.ActionListener() {
@@ -88,36 +76,31 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
             .addComponent(titulo)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(subTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(subTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(btnUnirse)
                         .addGap(31, 31, 31)
                         .addComponent(btnLogOff)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(464, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(subTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUnirse)
-                            .addComponent(btnLogOff)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(subTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUnirse)
+                    .addComponent(btnLogOff))
+                .addGap(106, 106, 106))
         );
 
         pack();
@@ -137,8 +120,6 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
     private javax.swing.JButton btnLogOff;
     private javax.swing.JButton btnUnirse;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField subTitulo;
     private javax.swing.JTextField titulo;
     // End of variables declaration//GEN-END:variables
@@ -161,12 +142,13 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
     private void unirse() {
         Mesa mesaSeleccionada = IListMesa.getSelectedValue();
         if (mesaSeleccionada != null) {
-            if (!mesaSeleccionada.jugadorEstaEnMesa(jugador)) {
-                mesaSeleccionada.agregarJugador(jugador);
-                //new ControladorVentanaMesaJugador(new VistaVentanaMesaJugador,jugador, mesaSeleccionada);
+            boolean ok = controlador.agregarJugadorAMesa(mesaSeleccionada, jugador);
+            if(ok){
                 new VentanaMesaJugador(jugador, mesaSeleccionada).setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Algo salio mal.", "", JOptionPane.ERROR_MESSAGE);
             }
-            //ToDo: El jugador ya se ha unido a la mesa. Mensaje “El jugador ya participa de esta mesa.”   
+            
         }
     }
 
@@ -179,6 +161,27 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
     public void salir() {
         jugador.setLogueado(false);
         dispose();
+    }
+
+    /*@Override
+    public void agregarJugadorAMesa(Mesa mesa, Jugador jugador) {
+        
+        Mesa mesaSeleccionada = IListMesa.getSelectedValue();
+        if (mesaSeleccionada != null) {
+            if (!mesaSeleccionada.jugadorEstaEnMesa(jugador)) {
+                mesaSeleccionada.agregarJugador(jugador);
+                //new ControladorVentanaMesaJugador(new VistaVentanaMesaJugador,jugador, mesaSeleccionada);
+                new VentanaMesaJugador(jugador, mesaSeleccionada).setVisible(true);
+            }
+            //ToDo: El jugador ya se ha unido a la mesa. Mensaje “El jugador ya participa de esta mesa.”  
+            throw new UsuariosExceptions("El jugador ya participa de esta mesa.");
+        }
+        
+    }*/
+
+    @Override
+    public void mostrarError(String message) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -40,8 +40,8 @@ public class ControladorVentanaMesaJugador implements Observador{
         
     }
     
-    public void ultimoNumeroSorteado(){
-        this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
+    public int ultimoNumeroSorteado(Mesa mesa){
+        return this.vista.mostrarUltimoNumeroSorteado();
     }
 
     @Override

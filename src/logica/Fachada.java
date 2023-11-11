@@ -89,5 +89,9 @@ public class Fachada {
     public Mesa buscarMesa(Mesa mesa){
         return sistemaRuleta.buscarMesa(mesa);
     }
+    
+    public boolean agregarJugadorAMesa(Mesa mesa, Jugador jugador) throws UsuariosExceptions{
+        return sistemaRuleta.agregarJugadorAMesa(mesa, jugador);
+    }
       
 }

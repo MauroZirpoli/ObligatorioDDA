@@ -1,6 +1,7 @@
 
 package logica;
 
+import Exceptions.UsuariosExceptions;
 import dominio.Jugador;
 import dominio.Mesa;
 import dominio.Ronda;
@@ -45,12 +46,23 @@ class SistemaRuleta {
     }
     
     public Mesa buscarMesa(Mesa mesa) {
-    for (Mesa m : mesas) {
-        if (m.equals(mesa)) {
-            return m; 
+        for (Mesa m : mesas) {
+            if (m.equals(mesa)) {
+                return m; 
+            }
         }
+        return null; 
     }
-    return null; 
-}
+    
+    public boolean agregarJugadorAMesa(Mesa mesa, Jugador jugador) throws UsuariosExceptions{
+        
+        boolean existe = mesa.jugadorEstaEnMesa(jugador);
+        
+        if(!existe){
+            mesa.agregarJugador(jugador);
+        }
+        throw new UsuariosExceptions("El jugador ya participa de esta Mesa.");
+        
+    }
     
 }

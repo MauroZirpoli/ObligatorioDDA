@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+import Exceptions.UsuariosExceptions;
 import Observer.Observable;
 import Observer.Observador;
 import dominio.Jugador;
@@ -26,6 +27,19 @@ public class ControladorUnirseAMesaJugador implements Observador{
         this.vista.listarMesasDisponibles(Fachada.getInstancia().getMesasDisponibles());
     }
     
+    public boolean agregarJugadorAMesa(Mesa mesaSeleccionada, Jugador jugador){
+        
+        boolean ok;
+        
+        try {
+            ok = Fachada.getInstancia().agregarJugadorAMesa(mesaSeleccionada, jugador);
+        }catch(UsuariosExceptions e) {
+            this.vista.mostrarError(e.getMessage());
+        }
+        
+        return false;
+        
+    }
      
     public void cerrar() {
         if (vista.confirmar("Confirma que desea salir", "Unirse a Mesa Jugador")) {

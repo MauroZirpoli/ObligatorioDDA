@@ -4,10 +4,6 @@
  */
 package dominio;
 
-/**
- *
- * @author Mauro
- */
 public class Bola {
     
     private int numero;

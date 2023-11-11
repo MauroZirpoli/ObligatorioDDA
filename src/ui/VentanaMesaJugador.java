@@ -8,6 +8,7 @@ import dominio.Mesa;
 import dominio.Ronda;
 import interfaces.VistaVentanaMesaJugador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -195,8 +196,13 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     }
 
     @Override
-    public void ultimoNumeroSorteado(int ultimoNumero) {
-        controlador.ultimoNumeroSorteado();
+    public void mostrarUltimoNumeroSorteado() {
+        int numero = controlador.ultimoNumeroSorteado();
+    }
+
+    @Override
+    public void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
     }
 
 

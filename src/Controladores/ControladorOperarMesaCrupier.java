@@ -73,7 +73,9 @@ public class ControladorOperarMesaCrupier implements Observador {
     public void cerrarMesa() {
         //liquidar mesa (pagar)
         // desloguear jug
-          // desloguear el crupier
+        usuarioCrupier.setLogueado(false);
+        vista.salir();
+        //ver a que pantalla va
     }
 
     @Override

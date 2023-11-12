@@ -13,6 +13,7 @@ import interfaces.Renderizable;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTable;
@@ -28,6 +29,8 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private ControladorOperarMesaCrupier controlador;
     private TipoApuesta[] tipoApuesta;
     int apuestaRojo = 0;
+    private Mesa mesa;
+    
 
     /**
      * Creates new form NewJFrame
@@ -35,6 +38,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     public OperarMesaCrupier(Crupier crupier, TipoApuesta[] tiposApuesta) {
         this.controlador = new ControladorOperarMesaCrupier(this, crupier);
         this.tipoApuesta = tiposApuesta;
+        this.mesa = controlador.getMesaAsignada();
         initComponents();
         inhabilitarComponentes();
         inicializar();
@@ -70,6 +74,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         jTabla1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabla2 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListUltimosLanzamientos = new javax.swing.JList<>();
+        txtUltimoNumeroSorteado = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +111,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
 
         btnCerrarMesa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCerrarMesa.setText("Cerrar mesa");
+        btnCerrarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarMesaActionPerformed(evt);
+            }
+        });
 
         lbApuestas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbApuestas.setText("Apuestas:");
@@ -155,6 +169,14 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         ));
         jScrollPane2.setViewportView(jTabla2);
 
+        jScrollPane3.setViewportView(jListUltimosLanzamientos);
+
+        txtUltimoNumeroSorteado.setEditable(false);
+
+        jLabel3.setText("Último número sorteado");
+
+        jLabel4.setText("Últimos Lanzamientos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,13 +223,26 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                             .addComponent(jLabel2))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 666, Short.MAX_VALUE))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(r, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(txtUltimoNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 529, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,13 +284,22 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
                             .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addComponent(cbEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUltimoNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(330, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         pack();
@@ -269,14 +313,22 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         lanzarPagar();
     }//GEN-LAST:event_btnLanzarPagarActionPerformed
 
+    private void btnCerrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarMesaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarMesa;
     private javax.swing.JButton btnLanzarPagar;
     private javax.swing.JComboBox cbEfectos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList<Integer> jListUltimosLanzamientos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTabla1;
     private javax.swing.JTable jTabla2;
     private javax.swing.JLabel lbApuestas;
@@ -291,6 +343,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private javax.swing.JTextField txtMontoMesa;
     private javax.swing.JTextField txtRonda;
     private javax.swing.JTextField txtRuleta;
+    private javax.swing.JTextField txtUltimoNumeroSorteado;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
@@ -317,16 +370,6 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     private void lanzarPagar() {
         agregarRonda();
         controlador.lanzarPagar();
-    }
-
-    @Override
-    public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos) {
-        //ToDo: La lista de ultimos lanzamientos esta traida pero falta agregarla en el diseño
-    }
-
-    @Override
-    public void ultimoNumeroSorteado(int ultimoNumero) {
-        controlador.ultimoNumeroSorteado();
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {
@@ -429,12 +472,30 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         int montoTotalApostado = Integer.parseInt(txtMonto.getText());
         int balanceSaldo = Integer.parseInt(txtMontoMesa.getText());
         int cantidadDeApuestas = Integer.parseInt(txtApuestas.getText());
-        Mesa mesa = controlador.getMesaAsignada();
         MecanismoSorteo mecanismo = (MecanismoSorteo) cbEfectos.getSelectedItem();
         //int numeroSorteado = Integer.parseInt(txtNumeroSorteado.getText());
         //ToDo: Faltaria numeroSorteadoDeLaRonda
 
         controlador.agregarRonda(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
+    }
+    
+    //PARTE DE ULTIMOS LANZAMIENTOS:
+    
+    @Override
+    public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos) {
+        
+        DefaultListModel<Integer> lista = new DefaultListModel<>();
+
+        for (Integer numero : ultimosLanzamientos) {
+            lista.addElement(numero);
+        }
+
+        jListUltimosLanzamientos.setModel(lista);
+    }
+    
+    @Override
+    public void ultimoNumeroSorteado(int ultimoNumero) {
+        txtUltimoNumeroSorteado.setText(String.valueOf(ultimoNumero));
     }
 
 }

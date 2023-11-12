@@ -16,7 +16,9 @@ import dominio.Ronda;
 import interfaces.VistaOperarMesaCrupier;
 import java.util.ArrayList;
 import logica.Fachada;
-
+import componente.PanelRuleta;
+import dominio.ModoAleatorioCompleto;
+import dominio.ModoAleatorioParcial;
 
 public class ControladorOperarMesaCrupier implements Observador {
 
@@ -43,30 +45,53 @@ public class ControladorOperarMesaCrupier implements Observador {
 
     }
 
-    public void lanzarPagar() {
-        if (mesaAsignada.isDisponible()) {
-            mesaAsignada.setDisponible(false);
-            
-            //habilitar el boton cerrar mesa
+    boolean bandera = true;
+    Bola bolaSorteada;
+
+    public void lanzarPagar(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo) {
+        if (bandera) {
+            bandera = false;
+            switch (mecanismo) {
+                case "Aleatorio Completo":
+                    MecanismoSorteo h = new ModoAleatorioCompleto(mecanismo);
+                    bolaSorteada = h.sortearBola();
+                    break;
+                    //Fachada.getInstancia().sortearBolaCompleta();
+                case "Aleatorio Parcial":
+                    MecanismoSorteo i = new ModoAleatorioParcial(mecanismo);
+                    bolaSorteada = i.sortearBola();
+                    break;
+                    //Fachada.getInstancia().sortearBola();
+                case "Simulador":
+                    MecanismoSorteo j = new ModoAleatorioParcial(mecanismo);
+                    bolaSorteada = j.sortearBola();
+                    break;
+                    //Fachada.getInstancia().sortearBolaSimulador();
+                default:
+                    break;
+            }
+            this.vista.mostrarBola(bolaSorteada);
+            agregarRonda(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
+            this.vista.pausarRuleta();
         } else {
-            mesaAsignada.setDisponible(true);
-            //deshabilitar boton cerrar mesa
+            bandera = true;
+            this.vista.reanudarRuleta();
         }
     }
-    
-    public void listarJugadoresConSuSaldo(){
+
+    public void listarJugadoresConSuSaldo() {
         this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
     }
-    
-    public void listarRondasConSuInformacion(){
+
+    public void listarRondasConSuInformacion() {
         this.vista.listarRondasConSuInformacion(Fachada.getInstancia().buscarMesa(mesaAsignada).getRondas());
     }
-    
-    public void ultimosLanzamientos(){
+
+    public void ultimosLanzamientos() {
         this.vista.ultimosLanzamientos(Fachada.getInstancia().buscarMesa(mesaAsignada).ultimosSeisNumerosSorteados());
     }
-    
-    public void ultimoNumeroSorteado(){
+
+    public void ultimoNumeroSorteado() {
         this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
     }
 
@@ -80,23 +105,21 @@ public class ControladorOperarMesaCrupier implements Observador {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        
+
         if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
-            
+
             obtenerDatos();
             listarJugadoresConSuSaldo();
-            listarRondasConSuInformacion(); 
+            listarRondasConSuInformacion();
             ultimosLanzamientos();
             ultimoNumeroSorteado();
         }
     }
-    
-    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, MecanismoSorteo mecanismo){
-        
-        /*Bola bola = new Bola(numeroSorteado);*/
-        
+
+    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo) {
+
         Ronda r = new Ronda(numeroDeRonda, balanceSaldo/*, bola*/, mesa, mecanismo, montoTotalApostado);
-        
-        Fachada.getInstancia().buscarMesa(mesaAsignada).agregarRonda(r);
+
+        Fachada.getInstancia().buscarMesa(mesa).agregarRonda(r);
     }
 }

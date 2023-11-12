@@ -11,19 +11,21 @@ public class ModoSimulador extends MecanismoSorteo {
 
     public ModoSimulador(ArrayList<Integer> numerosApuestaDirecta) {
         this.numerosApuestaDirecta = numerosApuestaDirecta;
-    }
+    }*/
 
+    @Override
     public Bola sortearBola() {
-        Random random = new Random();
+        int numero = 0;
+        /*Random random = new Random();
         int index = random.nextInt(numerosApuestaDirecta.size() + 1);
         int numero;
         if (index == numerosApuestaDirecta.size()) {
             numero = 0; // El cero
         } else {
             numero = numerosApuestaDirecta.get(index);
-        }
+        }*/
         return new Bola(numero);
-    }*/
+    }
 
     public ModoSimulador(String nombre) {
         super(nombre);
@@ -47,4 +49,6 @@ public class ModoSimulador extends MecanismoSorteo {
         }
         return new Bola(numero);
     }*/
+
+   
 }

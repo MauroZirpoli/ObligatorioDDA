@@ -13,11 +13,12 @@ public class ModoAleatorioParcial extends MecanismoSorteo{
         super(nombre);
     }
 
+    @Override
     public Bola sortearBola() {
         Random random = new Random();
         int numero;
         do {
-            numero = random.nextInt(100);
+            numero = random.nextInt(37);
         } while (numerosSorteados.contains(numero));
 
         numerosSorteados.add(numero);

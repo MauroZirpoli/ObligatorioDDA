@@ -39,16 +39,16 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtMontoMesa" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="txtBceMesa" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtApuestas" min="-2" pref="27" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Component id="lbMonto" min="-2" pref="47" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtMonto" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="txtApuestasRonda" min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cbEfectos" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -94,7 +94,7 @@
                               <Component id="txtUltimoNumeroSorteado" min="-2" pref="51" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="529" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -123,7 +123,7 @@
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtMontoMesa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBceMesa" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           </Group>
@@ -132,7 +132,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="lbMonto" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="txtMonto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtApuestasRonda" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="lbApuestas" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="103" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="256" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -199,7 +199,7 @@
         <Property name="text" type="java.lang.String" value="$ -"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMontoMesa">
+    <Component class="javax.swing.JTextField" name="txtBceMesa">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -210,7 +210,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMontoMesaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBceMesaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbPesos">
@@ -288,7 +288,7 @@
         <Property name="text" type="java.lang.String" value="Monto$"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMonto">
+    <Component class="javax.swing.JTextField" name="txtApuestasRonda">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -316,8 +316,11 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEfectosActionPerformed"/>
+      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnLanzarPagar">

@@ -170,7 +170,7 @@ public class IniciarMesaCrupier extends javax.swing.JDialog implements VistaInic
         }
 
         new OperarMesaCrupier(crupier, tiposApuesta).setVisible(true);
-        // Mesa mesa = new Mesa(controlador.getUsuarioCrupier());
+        Mesa mesa = new Mesa(crupier);
         /*    
         btnIniciar.addActionListener(new ActionListener() {
 

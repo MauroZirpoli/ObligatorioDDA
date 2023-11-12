@@ -4,6 +4,7 @@
  */
 package interfaces;
 
+import dominio.Bola;
 import dominio.Jugador;
 import dominio.MecanismoSorteo;
 import dominio.Ronda;
@@ -20,4 +21,7 @@ public interface VistaOperarMesaCrupier {
     public void ultimosLanzamientos(ArrayList<Integer> ultimosLanzamientos);
     public void ultimoNumeroSorteado(int ultimoNumero);
     public void salir();
+    public void pausarRuleta();
+    public void reanudarRuleta();
+    public void mostrarBola(Bola bolaSorteada);
 }

@@ -59,7 +59,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
 
         r = new componente.PanelRuleta();
         jLabel1 = new javax.swing.JLabel();
-        txtMontoMesa = new javax.swing.JTextField();
+        txtSaldoJugador = new javax.swing.JTextField();
         lbPesos = new javax.swing.JLabel();
         txtRonda = new javax.swing.JTextField();
         lbRonda = new javax.swing.JLabel();
@@ -81,12 +81,12 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("$ -");
 
-        txtMontoMesa.setEditable(false);
-        txtMontoMesa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtMontoMesa.setForeground(new java.awt.Color(255, 51, 51));
-        txtMontoMesa.addActionListener(new java.awt.event.ActionListener() {
+        txtSaldoJugador.setEditable(false);
+        txtSaldoJugador.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtSaldoJugador.setForeground(new java.awt.Color(255, 51, 51));
+        txtSaldoJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMontoMesaActionPerformed(evt);
+                txtSaldoJugadorActionPerformed(evt);
             }
         });
 
@@ -160,7 +160,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMontoMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSaldoJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(143, 143, 143)
                                 .addComponent(lbRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -207,7 +207,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
-                                    .addComponent(txtMontoMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSaldoJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
@@ -234,9 +234,9 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMontoMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoMesaActionPerformed
+    private void txtSaldoJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoJugadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMontoMesaActionPerformed
+    }//GEN-LAST:event_txtSaldoJugadorActionPerformed
 
     private void btnAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbandonarActionPerformed
         // TODO add your handling code here:
@@ -256,14 +256,14 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     private javax.swing.JLabel lbRonda;
     private javax.swing.JLabel lbRuleta;
     private componente.PanelRuleta r;
-    private javax.swing.JTextField txtMontoMesa;
     private javax.swing.JTextField txtRonda;
     private javax.swing.JTextField txtRuleta;
+    private javax.swing.JTextField txtSaldoJugador;
     private javax.swing.JTextField txtUltimoNumeroSorteado;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
-        
+        txtSaldoJugador.setText(String.valueOf(jugador.getSaldoInicial()));
         
     }
     

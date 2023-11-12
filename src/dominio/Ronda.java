@@ -8,11 +8,11 @@ public class Ronda {
     private Bola bola;
     private Mesa mesa;
     private ArrayList<Apuesta> apuestas;
-    private MecanismoSorteo mecanismoSorteo;
+    private String mecanismoSorteo;
     private int balanceSaldo=0;
     private int montoTotalApostado;
 
-    public Ronda(int numeroRonda, /*Bola bola,*/ int balanceSaldo,Mesa mesa,  MecanismoSorteo mecanismoSorteo, int montoTotalApostado) {
+    public Ronda(int numeroRonda, /*Bola bola,*/ int balanceSaldo,Mesa mesa,  String mecanismoSorteo, int montoTotalApostado) {
         this.numero = numeroRonda;
         this.balanceSaldo=balanceSaldo;
         //this.bola=bola;
@@ -66,11 +66,11 @@ public class Ronda {
         this.apuestas = apuestas;
     }
 
-    public MecanismoSorteo getMecanismoSorteo() {
+    public String getMecanismoSorteo() {
         return mecanismoSorteo;
     }
 
-    public void setMecanismoSorteo(MecanismoSorteo mecanismoSorteo) {
+    public void setMecanismoSorteo(String mecanismoSorteo) {
         this.mecanismoSorteo = mecanismoSorteo;
     }
 

@@ -21,11 +21,12 @@ public class Mesa extends Observable{
         this.jugadores = jugadores;
         this.crupier = crupier;
         this.disponible = false;
-        numeroDeMesa++;
     }
 
-    public Mesa() {
-
+    public Mesa(Crupier crupier) {
+        this.crupier = crupier;
+        this.numeroDeMesa=1;
+        this.disponible = true;
     }
 
     public int getNumeroDeMesa() {
@@ -92,7 +93,7 @@ public class Mesa extends Observable{
         
         if(r != null){
             rondas.add(r);
-            notificar(Observable.Evento.CARGAR_RONDA);
+            //notificar(Observable.Evento.CARGAR_RONDA);
             return true;
         }
         return false;

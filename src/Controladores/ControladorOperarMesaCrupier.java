@@ -16,6 +16,7 @@ import dominio.Ronda;
 import interfaces.VistaOperarMesaCrupier;
 import java.util.ArrayList;
 import logica.Fachada;
+import componente.PanelRuleta;
 
 
 public class ControladorOperarMesaCrupier implements Observador {
@@ -23,6 +24,7 @@ public class ControladorOperarMesaCrupier implements Observador {
     VistaOperarMesaCrupier vista;
     Crupier usuarioCrupier;
     Mesa mesaAsignada;
+    
 
     public ControladorOperarMesaCrupier(VistaOperarMesaCrupier vista, Crupier usuarioCrupier) {
         this.vista = vista;
@@ -43,14 +45,16 @@ public class ControladorOperarMesaCrupier implements Observador {
 
     }
 
-    public void lanzarPagar() {
-        if (mesaAsignada.isDisponible()) {
-            mesaAsignada.setDisponible(false);
+    boolean bandera = true;
+    public void lanzarPagar(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo) {
+        if (bandera) {
+            bandera=false;
+            agregarRonda(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
+            this.vista.pausarRuleta();
             
-            //habilitar el boton cerrar mesa
         } else {
-            mesaAsignada.setDisponible(true);
-            //deshabilitar boton cerrar mesa
+            bandera = true;
+            this.vista.reanudarRuleta();
         }
     }
     
@@ -91,12 +95,10 @@ public class ControladorOperarMesaCrupier implements Observador {
         }
     }
     
-    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, MecanismoSorteo mecanismo){
-        
-        /*Bola bola = new Bola(numeroSorteado);*/
-        
+    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo){
+           
         Ronda r = new Ronda(numeroDeRonda, balanceSaldo/*, bola*/, mesa, mecanismo, montoTotalApostado);
         
-        Fachada.getInstancia().buscarMesa(mesaAsignada).agregarRonda(r);
+        Fachada.getInstancia().buscarMesa(mesa).agregarRonda(r);
     }
 }

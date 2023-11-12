@@ -27,5 +27,15 @@ public abstract class MecanismoSorteo implements Renderizable{
     public String getRenderDetail() {
         return this.nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     
 }

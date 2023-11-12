@@ -9,9 +9,10 @@ public class ModoAleatorioCompleto extends MecanismoSorteo{
         super(nombre);
     }
     
+  
     public Bola sortearBola() {
         Random random = new Random();
-        int numero = random.nextInt(100); // Valor aleatorio en cada ronda
+        int numero = random.nextInt(37); // Valor aleatorio en cada ronda
         return new Bola(numero);
     }
 

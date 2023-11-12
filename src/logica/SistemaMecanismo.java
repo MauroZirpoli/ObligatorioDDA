@@ -27,4 +27,12 @@ public class SistemaMecanismo {
     public ArrayList<MecanismoSorteo> getEfectos() {
         return efectos;
     }
+    
+    public void sortearBolaParcial(String meca){
+        for (MecanismoSorteo m : efectos){
+            if (meca.equals(m.getNombre())){
+                
+            }
+        }
+    }
 }

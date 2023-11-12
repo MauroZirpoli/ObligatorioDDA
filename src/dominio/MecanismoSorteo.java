@@ -11,7 +11,7 @@ public abstract class MecanismoSorteo implements Renderizable{
     public MecanismoSorteo(String nombre) {
         this.nombre = nombre;
     }
-    
+    public abstract Bola sortearBola();
        
     private ArrayList<Ronda> rondas = new ArrayList<>();
 

@@ -7,6 +7,7 @@ import dominio.Crupier;
 import dominio.Jugador;
 import dominio.MecanismoSorteo;
 import dominio.Mesa;
+import dominio.Bola;
 import dominio.Ronda;
 import dominio.TipoApuesta;
 import interfaces.Renderizable;
@@ -390,6 +391,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         controlador.lanzarPagar(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
     }
 
+    @Override
+    public void mostrarBola(Bola bolaSorteada) {
+        txtUltimoNumeroSorteado.setText(bolaSorteada.getNumero() + "");
+    }
+
     private class Detalle implements ListCellRenderer<Renderizable> {
 
         @Override
@@ -434,6 +440,8 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
             }
         }
     }
+    
+  
 
     @Override
     public void salir() {

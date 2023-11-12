@@ -17,14 +17,14 @@ import interfaces.VistaOperarMesaCrupier;
 import java.util.ArrayList;
 import logica.Fachada;
 import componente.PanelRuleta;
-
+import dominio.ModoAleatorioCompleto;
+import dominio.ModoAleatorioParcial;
 
 public class ControladorOperarMesaCrupier implements Observador {
 
     VistaOperarMesaCrupier vista;
     Crupier usuarioCrupier;
     Mesa mesaAsignada;
-    
 
     public ControladorOperarMesaCrupier(VistaOperarMesaCrupier vista, Crupier usuarioCrupier) {
         this.vista = vista;
@@ -46,31 +46,52 @@ public class ControladorOperarMesaCrupier implements Observador {
     }
 
     boolean bandera = true;
+    Bola bolaSorteada;
+
     public void lanzarPagar(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo) {
         if (bandera) {
-            bandera=false;
+            bandera = false;
+            switch (mecanismo) {
+                case "Aleatorio Completo":
+                    MecanismoSorteo h = new ModoAleatorioCompleto(mecanismo);
+                    bolaSorteada = h.sortearBola();
+                    break;
+                    //Fachada.getInstancia().sortearBolaCompleta();
+                case "Aleatorio Parcial":
+                    MecanismoSorteo i = new ModoAleatorioParcial(mecanismo);
+                    bolaSorteada = i.sortearBola();
+                    break;
+                    //Fachada.getInstancia().sortearBola();
+                case "Simulador":
+                    MecanismoSorteo j = new ModoAleatorioParcial(mecanismo);
+                    bolaSorteada = j.sortearBola();
+                    break;
+                    //Fachada.getInstancia().sortearBolaSimulador();
+                default:
+                    break;
+            }
+            this.vista.mostrarBola(bolaSorteada);
             agregarRonda(numeroDeRonda, balanceSaldo, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
             this.vista.pausarRuleta();
-            
         } else {
             bandera = true;
             this.vista.reanudarRuleta();
         }
     }
-    
-    public void listarJugadoresConSuSaldo(){
+
+    public void listarJugadoresConSuSaldo() {
         this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
     }
-    
-    public void listarRondasConSuInformacion(){
+
+    public void listarRondasConSuInformacion() {
         this.vista.listarRondasConSuInformacion(Fachada.getInstancia().buscarMesa(mesaAsignada).getRondas());
     }
-    
-    public void ultimosLanzamientos(){
+
+    public void ultimosLanzamientos() {
         this.vista.ultimosLanzamientos(Fachada.getInstancia().buscarMesa(mesaAsignada).ultimosSeisNumerosSorteados());
     }
-    
-    public void ultimoNumeroSorteado(){
+
+    public void ultimoNumeroSorteado() {
         this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
     }
 
@@ -84,21 +105,21 @@ public class ControladorOperarMesaCrupier implements Observador {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        
+
         if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
-            
+
             obtenerDatos();
             listarJugadoresConSuSaldo();
-            listarRondasConSuInformacion(); 
+            listarRondasConSuInformacion();
             ultimosLanzamientos();
             ultimoNumeroSorteado();
         }
     }
-    
-    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo){
-           
+
+    public void agregarRonda(int numeroDeRonda, int balanceSaldo,/* int numeroSorteado,*/ int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo) {
+
         Ronda r = new Ronda(numeroDeRonda, balanceSaldo/*, bola*/, mesa, mecanismo, montoTotalApostado);
-        
+
         Fachada.getInstancia().buscarMesa(mesa).agregarRonda(r);
     }
 }

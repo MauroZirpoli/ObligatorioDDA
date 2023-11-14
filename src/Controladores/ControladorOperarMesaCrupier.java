@@ -102,6 +102,7 @@ public class ControladorOperarMesaCrupier implements Observador {
          //liquidar mesa (pagar)
         // desloguear jug
         usuarioCrupier.setLogueado(false);
+        mesaAsignada.setDisponible(false);
         this.vista.salir();
         //ver a que pantalla va
     }

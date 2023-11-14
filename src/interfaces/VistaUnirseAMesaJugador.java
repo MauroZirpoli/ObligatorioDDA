@@ -21,4 +21,5 @@ public interface VistaUnirseAMesaJugador {
 
     public void mostrarError(String message);
     
+    
 }

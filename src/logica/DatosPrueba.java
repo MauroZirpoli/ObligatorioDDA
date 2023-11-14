@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import dominio.Crupier;
 import dominio.Jugador;
 import dominio.MecanismoSorteo;
+import dominio.Mesa;
 import dominio.ModoAleatorioCompleto;
 import dominio.ModoAleatorioParcial;
 import dominio.ModoSimulador;
@@ -65,6 +66,11 @@ public class DatosPrueba {
         Fachada.getInstancia().agregar(aleatorioCompl);
         Fachada.getInstancia().agregar(aleatorioParcial);
         Fachada.getInstancia().agregar(simulador);
+        
+        //Mesa mesa = new Mesa (crupier1);
+        //crupier1.setMesaAsignada(mesa);
+        
+        //Fachada.getInstancia().agregarMesa(mesa);
         
     }
     

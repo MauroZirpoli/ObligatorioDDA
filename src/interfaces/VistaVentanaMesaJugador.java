@@ -4,16 +4,18 @@
  */
 package interfaces;
 
+import dominio.Jugador;
 import dominio.Ronda;
 import java.util.ArrayList;
 
 
 public interface VistaVentanaMesaJugador {
     
-    public void mostrarDatos(int saldoMesa, int ronda, int numeroMesa);
+    public void mostrarDatos(Ronda ronda);
     public void mostrarInfoRonda(ArrayList<Ronda> rondasDelJugador);
     public void mostrarUltimoNumeroSorteado();
     public void mostrarError(String mensaje);
     public void salir();
+    public void listarJugadoresConSuSaldo(ArrayList<Jugador> jugadoresDeLaMesa);
     
 }

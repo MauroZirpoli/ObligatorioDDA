@@ -33,6 +33,7 @@ public class ControladorUnirseAMesaJugador implements Observador{
         
         try {
             ok = Fachada.getInstancia().agregarJugadorAMesa(mesaSeleccionada, jugador);
+            return true;
         }catch(UsuariosExceptions e) {
             this.vista.mostrarError(e.getMessage());
         }

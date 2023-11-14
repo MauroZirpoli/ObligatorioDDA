@@ -322,7 +322,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     }//GEN-LAST:event_btnLanzarPagarActionPerformed
 
     private void btnCerrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarMesaActionPerformed
-        // TODO add your handling code here:
+        cerrarMesa();
     }//GEN-LAST:event_btnCerrarMesaActionPerformed
 
     private void cbEfectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEfectosActionPerformed
@@ -394,6 +394,10 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     @Override
     public void mostrarBola(Bola bolaSorteada) {
         txtUltimoNumeroSorteado.setText(bolaSorteada.getNumero() + "");
+    }
+
+    private void cerrarMesa() {
+        controlador.cerrarMesa();
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {

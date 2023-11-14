@@ -3,7 +3,7 @@ package dominio;
 import Observer.Observable;
 import java.util.ArrayList;
 
-public class Mesa extends Observable{
+public class Mesa extends Observable {
 
     private ArrayList<Ronda> rondas = new ArrayList<>();
     private ArrayList<Apuesta> apuestas = new ArrayList<>();
@@ -25,7 +25,7 @@ public class Mesa extends Observable{
 
     public Mesa(Crupier crupier) {
         this.crupier = crupier;
-        this.numeroDeMesa=1;
+        this.numeroDeMesa = 1;
         this.disponible = true;
     }
 
@@ -87,18 +87,20 @@ public class Mesa extends Observable{
 
     public int cantidadDeApuestas() {
         return apuestas.size();
-    };
+    }
+
+    ;
     
-    public boolean agregarRonda(Ronda r){
-        
-        if(r != null){
+    public boolean agregarRonda(Ronda r) {
+
+        if (r != null) {
             rondas.add(r);
-            //notificar(Observable.Evento.CARGAR_RONDA);
+            notificar(Evento.CARGAR_RONDA);
             return true;
         }
         return false;
     }
-    
+
     public int totalDeApuestasPorRonda() {
         int apuestasPorRonda;
         Ronda ronda = rondas.get(rondas.size() - 1);
@@ -136,15 +138,30 @@ public class Mesa extends Observable{
         return ultimosNumeros;
     }
 
-    public void agregarJugador(Jugador jugador) {
-        jugadores.add(jugador);
+    public void agregarJugador(Jugador j) {
+        if (j != null) {
+            jugadores.add(j);
+            notificar(Evento.AGREGAR_JUGADOR);
+        }
     }
 
     public boolean jugadorEstaEnMesa(Jugador jugador) {
-        return jugadores.contains(jugador);
+        for (Jugador j : jugadores) {
+            if (j.equals(jugador)){
+                return true;
+            }
+        }
+        return false;
     }
-    
+
     public void eliminarJugador(Jugador jugador) {
         jugadores.remove(jugador);
+    }
+
+    public Ronda getUltimaRonda() {
+        if (rondas.size()==0){
+        return null;
+        }
+        return rondas.get(rondas.size()-1);
     }
 }

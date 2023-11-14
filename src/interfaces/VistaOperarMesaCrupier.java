@@ -24,4 +24,5 @@ public interface VistaOperarMesaCrupier {
     public void pausarRuleta();
     public void reanudarRuleta();
     public void mostrarBola(Bola bolaSorteada);
+  
 }

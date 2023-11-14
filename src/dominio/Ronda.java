@@ -12,10 +12,10 @@ public class Ronda {
     private int balanceSaldo=0;
     private int montoTotalApostado;
 
-    public Ronda(int numeroRonda, /*Bola bola,*/ int balanceSaldo,Mesa mesa,  String mecanismoSorteo, int montoTotalApostado) {
+    public Ronda(int numeroRonda,  int balanceSaldo,Bola bola, Mesa mesa,  String mecanismoSorteo, int montoTotalApostado) {
         this.numero = numeroRonda;
         this.balanceSaldo=balanceSaldo;
-        //this.bola=bola;
+        this.bola=bola;
         this.mesa = mesa;
         this.apuestas = apuestas;
         this.mecanismoSorteo = mecanismoSorteo;

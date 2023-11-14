@@ -33,6 +33,7 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
 
         initComponents();
         this.controlador = new ControladorUnirseAMesaJugador(this, jugador);
+        this.jugador = jugador;
         inicializar();
     }
 

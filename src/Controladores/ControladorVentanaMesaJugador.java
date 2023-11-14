@@ -3,6 +3,7 @@ package Controladores;
 
 import Observer.Observable;
 import Observer.Observador;
+import dominio.Bola;
 import dominio.Jugador;
 import dominio.Mesa;
 import dominio.Ronda;
@@ -15,21 +16,18 @@ public class ControladorVentanaMesaJugador implements Observador{
       
     VistaVentanaMesaJugador vista;
     Jugador usuarioJugador;
-    //Mesa mesaAsignada;
+    Mesa mesaAsignada;
 
-    public ControladorVentanaMesaJugador(VistaVentanaMesaJugador vista, Jugador usuarioJugador/*, Mesa mesaAsignada*/) {
+    public ControladorVentanaMesaJugador(VistaVentanaMesaJugador vista, Jugador usuarioJugador, Mesa mesaAsignada) {
         this.vista = vista;
         this.usuarioJugador = usuarioJugador;
-        //this.mesaAsignada=mesaAsignada;
+        this.mesaAsignada=mesaAsignada;
+        this.inicializarSubs();
     }
 
     public void obtenerDatos() {
-        
-        /*Mesa mesaAsignada = usuarioCrupier.getMesaAsignada();
-        int saldoMesa = mesaAsignada.getBalanceSaldo();
-        int numeroMesa = mesaAsignada.getNumeroDeMesa();
-        //int ronda = ronda.getnumero();
-        this.vista.mostrarDatos(saldoMesa, 1, numeroMesa);*/
+        Ronda ronda = mesaAsignada.getUltimaRonda();
+        this.vista.mostrarDatos(ronda);
         
         this.usuarioJugador.getSaldoInicial();
         //traerNumeroDeMesaAsignada
@@ -50,8 +48,11 @@ public class ControladorVentanaMesaJugador implements Observador{
         if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
             
             obtenerDatos();
-            //ultimoNumeroSorteado(mesa);
         }
         
+    }
+
+    private void inicializarSubs() {
+        this.mesaAsignada.subscribir(this);
     }
 }

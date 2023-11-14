@@ -22,7 +22,9 @@ public class ControladorIniciarMesaCrupier implements Observador{
     public ControladorIniciarMesaCrupier(VistaIniciarMesaCrupier vista, Crupier usuarioCrupier) {
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
-        this.usuarioCrupier.setMesaAsignada(new Mesa(usuarioCrupier));
+        Mesa mesa = new Mesa(usuarioCrupier);
+        this.usuarioCrupier.setMesaAsignada(mesa);
+        Fachada.getInstancia().agregarMesa(mesa);
     }
     
     public void listarTipoApuestas(){

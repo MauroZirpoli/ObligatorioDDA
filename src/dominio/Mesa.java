@@ -167,7 +167,7 @@ public class Mesa extends Observable {
 
     @Override
     public String toString() {
-        return String.valueOf(numeroDeMesa);
+        return String.valueOf("Numero de Mesa " + numeroDeMesa);
     }
     
     

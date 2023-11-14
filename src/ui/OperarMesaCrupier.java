@@ -513,13 +513,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
     @Override
     public void pausarRuleta(){
         r.pausar();
-        //btnCerrarMesa.setEnabled(false);
     }
     
     @Override
     public void reanudarRuleta(){
         r.reanudar();
-        //btnCerrarMesa.setEnabled(true);
     }
 
 }

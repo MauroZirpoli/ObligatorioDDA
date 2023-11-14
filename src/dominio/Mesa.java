@@ -164,4 +164,11 @@ public class Mesa extends Observable {
         }
         return rondas.get(rondas.size()-1);
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf("Numero de Mesa " + numeroDeMesa);
+    }
+    
+    
 }

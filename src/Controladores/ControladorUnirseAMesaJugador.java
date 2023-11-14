@@ -39,7 +39,6 @@ public class ControladorUnirseAMesaJugador implements Observador{
         }
         
         return false;
-        
     }
      
     public void cerrar() {

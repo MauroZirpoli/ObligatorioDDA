@@ -12,12 +12,18 @@ import Exceptions.UsuariosExceptions;
 import dominio.Jugador;
 import dominio.Mesa;
 import interfaces.VistaVentanaMesaJugador;
+import java.awt.Component;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultListCellRenderer;
+import java.awt.event.ActionListener;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -124,11 +130,11 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
     private javax.swing.JTextField subTitulo;
     private javax.swing.JTextField titulo;
     // End of variables declaration//GEN-END:variables
-    
+
     private void inicializar() {
         controlador.listarMesasDisponibles();
     }
-    
+
     @Override
     public void listarMesasDisponibles(ArrayList<Mesa> mesasDisponibles) {
 
@@ -140,17 +146,19 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         IListMesa.setModel(list);
     }
 
+
+
     public void unirse() {
         Mesa mesaSeleccionada = IListMesa.getSelectedValue();
         if (mesaSeleccionada != null) {
             boolean ok = controlador.agregarJugadorAMesa(mesaSeleccionada, jugador);
-            if(ok){
-                
+            if (ok) {
+
                 new VentanaMesaJugador(jugador, mesaSeleccionada).setVisible(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Algo salio mal.", "", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         }
     }
 
@@ -180,10 +188,10 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         }
         
     }*/
-
     @Override
     public void mostrarError(String message) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 
 }

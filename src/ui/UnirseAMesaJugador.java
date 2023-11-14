@@ -145,6 +145,7 @@ public class UnirseAMesaJugador extends javax.swing.JDialog implements VistaUnir
         if (mesaSeleccionada != null) {
             boolean ok = controlador.agregarJugadorAMesa(mesaSeleccionada, jugador);
             if(ok){
+                
                 new VentanaMesaJugador(jugador, mesaSeleccionada).setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "Algo salio mal.", "", JOptionPane.ERROR_MESSAGE);

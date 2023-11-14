@@ -30,6 +30,7 @@ public class ControladorOperarMesaCrupier implements Observador {
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
         this.mesaAsignada = usuarioCrupier.getMesaAsignada();
+        
     }
 
     public Mesa getMesaAsignada() {
@@ -102,7 +103,7 @@ public class ControladorOperarMesaCrupier implements Observador {
          //liquidar mesa (pagar)
         // desloguear jug
         usuarioCrupier.setLogueado(false);
-        vista.salir();
+        this.vista.salir();
         //ver a que pantalla va
     }
 
@@ -112,10 +113,10 @@ public class ControladorOperarMesaCrupier implements Observador {
         if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
 
             obtenerDatos();
-            listarJugadoresConSuSaldo();
-            listarRondasConSuInformacion();
-            ultimosLanzamientos();
-            ultimoNumeroSorteado();
+            //listarJugadoresConSuSaldo();
+            //listarRondasConSuInformacion();
+            //ultimosLanzamientos();
+            //ultimoNumeroSorteado();
         }
     }
 
@@ -125,4 +126,5 @@ public class ControladorOperarMesaCrupier implements Observador {
 
         mesa.agregarRonda(r);
     }
+   
 }

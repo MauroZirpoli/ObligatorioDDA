@@ -49,10 +49,14 @@ public class ControladorVentanaMesaJugador implements Observador{
             
             obtenerDatos();
         }
+        if (((Observable.Evento) evento).equals(Observable.Evento.AGREGAR_JUGADOR)) {
+            this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
+        }
         
     }
 
     private void inicializarSubs() {
         this.mesaAsignada.subscribir(this);
     }
-}
+
+    }

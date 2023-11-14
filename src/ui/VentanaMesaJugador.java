@@ -284,7 +284,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     }//GEN-LAST:event_txtSaldoJugadorActionPerformed
 
     private void btnAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbandonarActionPerformed
-        // TODO add your handling code here:
+        abandonar();
     }//GEN-LAST:event_btnAbandonarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -362,6 +362,9 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     public void abandonar(){
         mesa.eliminarJugador(jugador);
         salir();
+        
+        //actualizar mesas disponibles en la lista o fijarse si cuando 
+        //se cierra la mesa, se sale de la lista
     }
 
     @Override
@@ -440,6 +443,11 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     @Override
     public void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void listarJugadoresConSuSaldo(ArrayList<Jugador> jugadoresDeLaMesa) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 

@@ -138,8 +138,11 @@ public class Mesa extends Observable {
         return ultimosNumeros;
     }
 
-    public void agregarJugador(Jugador jugador) {
-        jugadores.add(jugador);
+    public void agregarJugador(Jugador j) {
+        if (j != null) {
+            jugadores.add(j);
+            notificar(Evento.AGREGAR_JUGADOR);
+        }
     }
 
     public boolean jugadorEstaEnMesa(Jugador jugador) {

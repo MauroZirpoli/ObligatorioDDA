@@ -4,6 +4,7 @@
  */
 package interfaces;
 
+import dominio.Jugador;
 import dominio.Ronda;
 import java.util.ArrayList;
 
@@ -15,5 +16,6 @@ public interface VistaVentanaMesaJugador {
     public void mostrarUltimoNumeroSorteado();
     public void mostrarError(String mensaje);
     public void salir();
+    public void listarJugadoresConSuSaldo(ArrayList<Jugador> jugadoresDeLaMesa);
     
 }

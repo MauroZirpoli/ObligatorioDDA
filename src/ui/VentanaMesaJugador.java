@@ -79,6 +79,8 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        txtNombreJugador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +101,11 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
 
         txtRonda.setEditable(false);
         txtRonda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtRonda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRondaActionPerformed(evt);
+            }
+        });
 
         lbRonda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbRonda.setText("Ronda #");
@@ -148,6 +155,11 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         jScrollPane2.setViewportView(jTabla2);
 
         txtUltimoNumeroSorteado.setEditable(false);
+        txtUltimoNumeroSorteado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUltimoNumeroSorteadoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Último número sorteado");
 
@@ -174,6 +186,14 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
             }
         });
 
+        jLabel4.setText("Jugador");
+
+        txtNombreJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreJugadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,7 +202,23 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAbandonar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,36 +234,20 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
-                        .addContainerGap(845, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreJugador))
+                            .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(49, 49, 49)
-                                        .addComponent(txtUltimoNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAbandonar))
+                                .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(49, 49, 49)
+                                .addComponent(txtUltimoNumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +269,9 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)
+                                .addComponent(txtNombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lbPesos2))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,6 +333,18 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
+    private void txtRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRondaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRondaActionPerformed
+
+    private void txtUltimoNumeroSorteadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUltimoNumeroSorteadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUltimoNumeroSorteadoActionPerformed
+
+    private void txtNombreJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreJugadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreJugadorActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbandonar;
     private javax.swing.JButton jButton1;
@@ -319,6 +353,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTabla1;
@@ -329,6 +364,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     private javax.swing.JLabel lbRonda;
     private javax.swing.JLabel lbRuleta;
     private componente.PanelRuleta r;
+    private javax.swing.JTextField txtNombreJugador;
     private javax.swing.JTextField txtRonda;
     private javax.swing.JTextField txtRuleta;
     private javax.swing.JTextField txtSaldoJugador;
@@ -337,6 +373,7 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
 
     private void inicializar() {
         txtSaldoJugador.setText(String.valueOf(jugador.getSaldoInicial()));
+        txtNombreJugador.setText(jugador.getNombre());
         controlador.obtenerDatos();
         
     }

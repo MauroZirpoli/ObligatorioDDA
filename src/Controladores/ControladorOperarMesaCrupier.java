@@ -37,7 +37,7 @@ public class ControladorOperarMesaCrupier implements Observador {
         return mesaAsignada;
     }
 
-        int ronda = 1;
+        int ronda = 0;
     public void obtenerDatos() {
         int saldoMesa = mesaAsignada.getBalanceSaldo();
         //int numeroMesa = mesaAsignada.getNumeroDeMesa();
@@ -46,7 +46,6 @@ public class ControladorOperarMesaCrupier implements Observador {
         ronda++;
         //int ronda = ronda.getnumero();
         this.vista.mostrarDatos(saldoMesa, ronda, numeroMesa, efectos);
-
     }
 
     boolean bandera = true;

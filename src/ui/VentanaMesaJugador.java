@@ -178,6 +178,11 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
         });
 
         jTextField1.setText("50");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox2.setText("Apostar en seleccion");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -326,6 +331,8 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
                     int apuesta = Integer.valueOf(jTextField1.getText());
                     System.out.println("Id de celda seleccionada: " + universalCellCode + ". Apuesta anterior: " + r.getApuesta(universalCellCode) + ". Apuesta nueva:" + apuesta);
                     r.setApuesta(universalCellCode, apuesta);
+                    TipoApuesta ta = controlador.buscarTipoApuesta(universalCellCode);
+                    controlador.crearApuesta(universalCellCode,apuesta, jugador, ta);
                 }
             });
         } else {
@@ -344,6 +351,10 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     private void txtNombreJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreJugadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreJugadorActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbandonar;

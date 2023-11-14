@@ -1,6 +1,7 @@
 
 package dominio;
 
+import Observer.Observable;
 import java.util.ArrayList;
 
 public class Ronda {
@@ -97,13 +98,13 @@ public class Ronda {
         return montoTotal;
     }
     
-    public int montoTotalPerdidoEnLaRonda(Jugador jugador){
+    public int montoTotalPerdidoEnLaRonda(){
         
         int montoTotal=0;
         
         for(Apuesta a: apuestas){
             
-           if(a.getJugador().equals(jugador) && !a.getApuestaGanada()){
+           if(!a.getApuestaGanada()){
                montoTotal+= a.getMontoTotal();
                        
            } 
@@ -112,13 +113,13 @@ public class Ronda {
         return montoTotal;
     }
     
-    public int montoTotalGanadoEnLaRonda(Jugador jugador){
+    public int montoTotalGanadoEnLaRonda(){
         
         int montoTotal=0;
         
         for(Apuesta a: apuestas){
             
-           if(a.getJugador().equals(jugador) && a.getApuestaGanada()){
+           if(a.getApuestaGanada()){
                montoTotal+= a.getMontoTotal();
                        
            } 
@@ -127,8 +128,8 @@ public class Ronda {
         return montoTotal;
     }
     
-    public int montoBalanceEnLaRonda(Jugador jugador){
-        return montoTotalGanadoEnLaRonda(jugador) - montoTotalPerdidoEnLaRonda(jugador);
+    public int montoBalanceEnLaRonda(){
+        return montoTotalGanadoEnLaRonda() - montoTotalPerdidoEnLaRonda();
     }
     
     //Para Mesa de Crupier:
@@ -173,6 +174,20 @@ public class Ronda {
             } else {
                 balanceSaldo -= a.getMontoTotal();
             }
+        }
+    }
+    
+    public void agregarJugador(Apuesta a) {
+        if (a != null) {
+            apuestas.add(a);
+        }
+    }
+
+    public void agregarApuesta(int universalCellCode, int valorDeApuesta, Jugador jugador, TipoApuesta tipo) {
+        Apuesta apuesta = new Apuesta(universalCellCode, valorDeApuesta, jugador, tipo );
+        
+        if(apuesta != null){
+            apuestas.add(apuesta);
         }
     }
 }

@@ -97,6 +97,17 @@ public class ControladorOperarMesaCrupier implements Observador {
     public void ultimoNumeroSorteado() {
         this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
     }
+    
+    public void obtenerCantidadApuestasPorRonda(){
+        
+        Ronda ultimaRonda = mesaAsignada.getUltimaRonda();
+        this.vista.obtenerCantidadDeApuestasPorRonda(ultimaRonda.totalDeApuestas());
+    }
+    
+    public void montoApostadoDeRonda(){
+        Ronda ultimaRonda = mesaAsignada.getUltimaRonda();
+        this.vista.obtenerMontoApostadoPorRonda(ultimaRonda.getMontoTotalApostado());
+    }
 
     public void cerrarMesa() {
          //liquidar mesa (pagar)

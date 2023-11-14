@@ -7,6 +7,7 @@ import dominio.Bola;
 import dominio.Jugador;
 import dominio.Mesa;
 import dominio.Ronda;
+import dominio.TipoApuesta;
 import interfaces.VistaVentanaMesaJugador;
 import java.util.ArrayList;
 import logica.Fachada;
@@ -57,6 +58,24 @@ public class ControladorVentanaMesaJugador implements Observador{
 
     private void inicializarSubs() {
         this.mesaAsignada.subscribir(this);
+    }
+    
+    public void crearApuesta(int universalCellCode, int valorDeApuesta, Jugador jugador, TipoApuesta tipo){
+        Ronda ronda = mesaAsignada.getUltimaRonda();
+        
+        ronda.agregarApuesta(universalCellCode, valorDeApuesta, jugador, tipo);
+    }
+
+    public TipoApuesta buscarTipoApuesta(int universalCellCode) {
+        ArrayList<TipoApuesta> ta = Fachada.getInstancia().getTiposApuesta();
+        
+        for(TipoApuesta tipoApuesta : ta){
+            if(tipoApuesta.getCodigo() == universalCellCode){
+                return tipoApuesta;
+            }
+        }
+        
+        return null;
     }
 
     }

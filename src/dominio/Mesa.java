@@ -115,7 +115,7 @@ public class Mesa extends Observable {
         return ultimoNumeroSorteado;
     }
 
-    public void calcularBalanceSaldo() {
+    /*public void calcularBalanceSaldo() {
         for (Apuesta a : apuestas) {
             if (a.getApuestaGanada()) {
                 balanceSaldo += a.calcularPago();
@@ -123,6 +123,16 @@ public class Mesa extends Observable {
                 balanceSaldo -= a.getMontoTotal();
             }
         }
+    }*/
+    
+    public int elBalanceSaldoDeTodasLasRondas() {
+        int saldoTotal = 0;
+
+        for (Ronda ronda : rondas) {
+            saldoTotal += ronda.getBalanceSaldo();
+        }
+
+        return saldoTotal;
     }
 
     public ArrayList<Integer> ultimosSeisNumerosSorteados() {

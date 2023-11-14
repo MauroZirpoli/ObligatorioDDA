@@ -125,6 +125,11 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
 
         txtApuestas.setEditable(false);
         txtApuestas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtApuestas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApuestasActionPerformed(evt);
+            }
+        });
 
         lbMonto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbMonto.setText("Monto$");
@@ -329,6 +334,10 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEfectosActionPerformed
 
+    private void txtApuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApuestasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApuestasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarMesa;
     private javax.swing.JButton btnLanzarPagar;
@@ -398,6 +407,17 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
 
     private void cerrarMesa() {
         controlador.cerrarMesa();
+    }
+
+    @Override
+    public void obtenerCantidadDeApuestasPorRonda(int cantidad) {
+        txtApuestas.setText(String.valueOf(cantidad));
+       
+    }
+
+    @Override
+    public void obtenerMontoApostadoPorRonda(int montoApostado) {
+        txtApuestas.setText(String.valueOf(montoApostado));
     }
 
     private class Detalle implements ListCellRenderer<Renderizable> {

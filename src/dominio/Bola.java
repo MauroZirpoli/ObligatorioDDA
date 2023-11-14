@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import java.util.Random;
+
 public class Bola {
     
     private int numero;
@@ -22,6 +24,11 @@ public class Bola {
         this.numero = numero;
     }
     
-    
+    public int sortearNumero() {
+        Random random = new Random();
+        int numeroSorteado = random.nextInt(37);
+        setNumero(numeroSorteado);
+        return numeroSorteado;
+    }
     
 }

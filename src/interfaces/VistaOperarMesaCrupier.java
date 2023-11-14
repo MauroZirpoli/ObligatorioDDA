@@ -24,5 +24,7 @@ public interface VistaOperarMesaCrupier {
     public void pausarRuleta();
     public void reanudarRuleta();
     public void mostrarBola(Bola bolaSorteada);
+    public void obtenerCantidadDeApuestasPorRonda(int cantidad);
+    public void obtenerMontoApostadoPorRonda(int montoApostado);
   
 }

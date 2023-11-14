@@ -5,11 +5,20 @@ import java.util.ArrayList;
 
 public class Apuesta {
     
+    private int numeroDeCelda;
+    private int valorApostado;
     private int montoTotal;
     private boolean apuestaGanada;
     private ArrayList<Ficha> fichas = new ArrayList<>();
     private TipoApuesta tipoApuesta;
     private Jugador jugador;
+
+    public Apuesta(int numeroDeCelda, int valorApostado, Jugador jugador, TipoApuesta tipoApuesta) {
+        this.numeroDeCelda = numeroDeCelda;
+        this.valorApostado = valorApostado;
+        this.jugador=jugador;
+        this.tipoApuesta=tipoApuesta;
+    }
 
     public void agregarFicha(Ficha ficha, TipoApuesta tipoApuesta) {
         this.tipoApuesta=tipoApuesta;

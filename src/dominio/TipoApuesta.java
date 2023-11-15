@@ -30,4 +30,4 @@ public abstract class TipoApuesta {
         return codigo;
     }
 
-}
+    }

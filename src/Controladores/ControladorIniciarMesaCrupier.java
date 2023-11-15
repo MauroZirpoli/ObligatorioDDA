@@ -8,6 +8,7 @@ import Observer.Observable;
 import Observer.Observador;
 import dominio.Crupier;
 import dominio.Mesa;
+import dominio.Ronda;
 import dominio.TipoApuesta;
 import logica.Fachada;
 import interfaces.VistaIniciarMesaCrupier;
@@ -23,6 +24,8 @@ public class ControladorIniciarMesaCrupier implements Observador{
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
         Mesa mesa = new Mesa(usuarioCrupier);
+        Ronda ronda = new Ronda();
+        mesa.agregarRonda(ronda);
         this.usuarioCrupier.setMesaAsignada(mesa);
         Fachada.getInstancia().agregarMesa(mesa);
     }

@@ -7,7 +7,8 @@ public abstract class Observable {
 
     public enum Evento {
         CARGAR_RONDA,
-        AGREGAR_JUGADOR;
+        AGREGAR_JUGADOR,
+        APUESTA_AGREGADA;
     }
 
     private List<Observador> observadores;

@@ -391,15 +391,13 @@ public class VentanaMesaJugador extends javax.swing.JFrame implements VistaVenta
     
     @Override
     public void mostrarDatos(Ronda ronda) {
-        if (ronda != null){
-        txtUltimoNumeroSorteado.setText(ronda.getBola().getNumero()+ "");
-        txtRonda.setText(ronda.getNumero()+ "");
-        txtRuleta.setText(ronda.getMesa().getNumeroDeMesa()+ "");
-        }else {
-        txtUltimoNumeroSorteado.setText( "0");
-        txtRonda.setText("0");
-        txtRuleta.setText("0");
+        if (ronda.getBola() != null ){
+           txtUltimoNumeroSorteado.setText(ronda.getBola().getNumero()+ "");
+        } else {
+            txtUltimoNumeroSorteado.setText( "-");
         }
+        txtRonda.setText(ronda.getNumero()+ "");
+        txtRuleta.setText(this.mesa.getNumeroDeMesa()+ ""); 
     }
 
     @Override

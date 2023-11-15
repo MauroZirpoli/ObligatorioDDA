@@ -8,6 +8,7 @@ public class ApuestaColores extends TipoApuesta{
         super(nombre, casillero, codigo);
     }
 
+    
     @Override
     public int calcularPago(int montoTotal) {
         return montoTotal * 2;

@@ -57,20 +57,22 @@ public class ControladorOperarMesaCrupier implements Observador {
                     MecanismoSorteo h = new ModoAleatorioCompleto(mecanismo);
                     bolaSorteada = h.sortearBola();
                     break;
-                //Fachada.getInstancia().sortearBolaCompleta();
+
                 case "Aleatorio Parcial":
                     MecanismoSorteo i = new ModoAleatorioParcial(mecanismo);
                     bolaSorteada = i.sortearBola();
                     break;
-                //Fachada.getInstancia().sortearBola();
+
+
                 case "Simulador":
                     MecanismoSorteo j = new ModoAleatorioParcial(mecanismo);
                     bolaSorteada = j.sortearBola();
                     break;
-                //Fachada.getInstancia().sortearBolaSimulador();
+
                 default:
                     break;
             }
+
             this.vista.pausarRuleta();
             this.vista.mostrarBola(bolaSorteada);
             int bS = balanceSaldo; //calcular este monto.

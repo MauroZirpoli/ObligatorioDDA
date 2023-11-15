@@ -5,7 +5,8 @@ import Observer.Observable;
 import java.util.ArrayList;
 
 public class Ronda extends Observable {
-    private int numero=0;
+    private static int contador = 0;
+    private int numero;
     private Bola bola;
     private Mesa mesa;
     private ArrayList<Apuesta> apuestas;
@@ -26,7 +27,7 @@ public class Ronda extends Observable {
     }*/
 
     public Ronda() {
-        this.numero++;
+        this.numero = ++contador;
         this.apuestas = new ArrayList();
     }
     
@@ -46,7 +47,7 @@ public class Ronda extends Observable {
 
     public void setBola(Bola bola) {
         this.bola = bola;
-        this.notificar(Evento.CARGAR_RONDA);
+        this.notificar(Evento.BOLA_SETEADA);
     }
 
     public int getMontoTotalApostado() {

@@ -6,9 +6,10 @@ import java.util.List;
 public abstract class Observable {
 
     public enum Evento {
-        CARGAR_RONDA,
+        BOLA_SETEADA,
         AGREGAR_JUGADOR,
-        APUESTA_AGREGADA;
+        APUESTA_AGREGADA,
+        RONDA_AGREGADA;
     }
 
     private List<Observador> observadores;

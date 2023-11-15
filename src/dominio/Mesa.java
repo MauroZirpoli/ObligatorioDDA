@@ -99,6 +99,7 @@ public class Mesa extends Observable {
     public boolean agregarRonda(Ronda r) {
         if (r != null) {
             rondas.add(r);
+            this.notificar(Evento.RONDA_AGREGADA);
             return true;
         }
         return false;

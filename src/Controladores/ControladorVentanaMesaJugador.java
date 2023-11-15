@@ -46,10 +46,12 @@ public class ControladorVentanaMesaJugador implements Observador{
     @Override
     public void notificar(Observable origen, Object evento) {
         
-        if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
-            
+        if (((Observable.Evento) evento).equals(Observable.Evento.BOLA_SETEADA)
+            || ((Observable.Evento) evento).equals(Observable.Evento.RONDA_AGREGADA)) {   
             obtenerDatos();
+            subscribirRondas();
         }
+
         if (((Observable.Evento) evento).equals(Observable.Evento.AGREGAR_JUGADOR)) {
             this.vista.listarJugadoresConSuSaldo(Fachada.getInstancia().buscarMesa(mesaAsignada).getJugadores());
         }
@@ -57,12 +59,20 @@ public class ControladorVentanaMesaJugador implements Observador{
     }
 
     private void inicializarSubs() {
+        for (Ronda r: this.mesaAsignada.getRondas()){
+            r.subscribir(this);
+        }
         this.mesaAsignada.subscribir(this);
+    }
+    
+    private void subscribirRondas(){
+        for (Ronda r: this.mesaAsignada.getRondas()){
+            r.subscribir(this);
+        }
     }
     
     public void crearApuesta(int universalCellCode, int valorDeApuesta, Jugador jugador, TipoApuesta tipo){
         Ronda ronda = mesaAsignada.getUltimaRonda();
-        
         ronda.agregarApuesta(universalCellCode, valorDeApuesta, jugador, tipo);
     }
 

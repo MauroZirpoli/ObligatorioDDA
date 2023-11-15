@@ -214,6 +214,7 @@ public class VentanaMesa extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         r.setVisible(PanelRuleta.ROJO, false);
         r.setVisible(PanelRuleta.NEGRO, false);
+        r.setVisible(PanelRuleta.MAYOR, false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

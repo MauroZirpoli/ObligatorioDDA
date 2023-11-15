@@ -41,6 +41,11 @@ public class Mesa extends Observable {
         this.crupier = crupier;
     }
 
+    public void setBalanceSaldo(int balanceSaldo) {
+        this.balanceSaldo = balanceSaldo;
+    }
+
+    
     public ArrayList<Ronda> getRondas() {
         return rondas;
     }
@@ -92,10 +97,9 @@ public class Mesa extends Observable {
     ;
     
     public boolean agregarRonda(Ronda r) {
-
         if (r != null) {
             rondas.add(r);
-            notificar(Evento.CARGAR_RONDA);
+            this.notificar(Evento.RONDA_AGREGADA);
             return true;
         }
         return false;
@@ -125,7 +129,7 @@ public class Mesa extends Observable {
         }
     }*/
     
-    public int elBalanceSaldoDeTodasLasRondas() {
+    /*public int elBalanceSaldoDeTodasLasRondas() {
         int saldoTotal = 0;
 
         for (Ronda ronda : rondas) {
@@ -133,7 +137,7 @@ public class Mesa extends Observable {
         }
 
         return saldoTotal;
-    }
+    }*/
 
     public ArrayList<Integer> ultimosSeisNumerosSorteados() {
         ArrayList<Integer> ultimosNumeros = new ArrayList<>();

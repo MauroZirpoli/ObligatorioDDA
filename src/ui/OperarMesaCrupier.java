@@ -500,7 +500,7 @@ public class OperarMesaCrupier extends javax.swing.JFrame implements VistaOperar
             int montoTotalDeApuestas = r.montoTotalDeLasApuestas(); 
             int montoTotalApuestasPerdidas = r.montoTotalApuestasPerdidasRecoleccion();
             int montoTotalDeApuestasPagadas = r.montoTotalApuestasPagadasLiquidacion();
-            int balancePosteriorAlSorteo = r.getBalanceSaldo();
+            int balancePosteriorAlSorteo = this.mesa.getBalanceSaldo();
             modelo.addRow(new Object[]{numeroRonda, balanceAnterior, montoTotalDeApuestas, montoTotalApuestasPerdidas, montoTotalDeApuestasPagadas, balancePosteriorAlSorteo });
         
             // Actualiza el balance anterior para la próxima ronda

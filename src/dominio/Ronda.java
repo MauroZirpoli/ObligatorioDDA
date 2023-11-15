@@ -4,26 +4,34 @@ package dominio;
 import Observer.Observable;
 import java.util.ArrayList;
 
-public class Ronda {
-    private int numero=0;
+public class Ronda extends Observable {
+    private static int contador = 0;
+    private int numero;
     private Bola bola;
     private Mesa mesa;
     private ArrayList<Apuesta> apuestas;
     private String mecanismoSorteo;
-    private int balanceSaldo=0;
     private int montoTotalApostado;
 
-    public Ronda(int numeroRonda,  int balanceSaldo,Bola bola, Mesa mesa,  String mecanismoSorteo, int montoTotalApostado) {
+   /* public Ronda(int numeroRonda,  int balanceSaldo,Bola bola, Mesa mesa,  String mecanismoSorteo, int montoTotalApostado) {
         this.numero = numeroRonda;
         this.balanceSaldo=balanceSaldo;
         this.bola=bola;
         this.mesa = mesa;
+        //No existe un parametro apuestas que se pase cómo para hacer esta asignación
         this.apuestas = apuestas;
         this.mecanismoSorteo = mecanismoSorteo;
 
         this.montoTotalApostado=montoTotalApostado;
         numero++;
+    }*/
+
+    public Ronda() {
+        this.numero = ++contador;
+        this.apuestas = new ArrayList();
     }
+    
+    
 
     public int getNumero() {
         return numero;
@@ -39,6 +47,7 @@ public class Ronda {
 
     public void setBola(Bola bola) {
         this.bola = bola;
+        this.notificar(Evento.BOLA_SETEADA);
     }
 
     public int getMontoTotalApostado() {
@@ -74,10 +83,6 @@ public class Ronda {
     public void setMecanismoSorteo(String mecanismoSorteo) {
         this.mecanismoSorteo = mecanismoSorteo;
     }
-
-    public int getBalanceSaldo() {
-        return balanceSaldo;
-    } 
     
     public int totalDeApuestas(){
         return apuestas.size();
@@ -167,7 +172,7 @@ public class Ronda {
         return monto;
     }
     
-    public void calcularBalanceSaldo() {
+    /*public void calcularBalanceSaldo() {
         for (Apuesta a : apuestas) {
             if (a.getApuestaGanada()) {
                 balanceSaldo += a.calcularPago();
@@ -175,20 +180,18 @@ public class Ronda {
                 balanceSaldo -= a.getMontoTotal();
             }
         }
-    }
+    }*/
     
     public void agregarJugador(Apuesta a) {
         if (a != null) {
-            apuestas.add(a);
+            this.apuestas.add(a);
         }
     }
 
     public void agregarApuesta(int universalCellCode, int valorDeApuesta, Jugador jugador, TipoApuesta tipo) {
         Apuesta apuesta = new Apuesta(universalCellCode, valorDeApuesta, jugador, tipo );
-        
-        if(apuesta != null){
-            apuestas.add(apuesta);
-        }
+        this.apuestas.add(apuesta);
+        this.notificar(Observable.Evento.APUESTA_AGREGADA);
     }
 }
 

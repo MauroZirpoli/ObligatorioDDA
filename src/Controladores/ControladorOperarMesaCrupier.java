@@ -30,22 +30,20 @@ public class ControladorOperarMesaCrupier implements Observador {
         this.vista = vista;
         this.usuarioCrupier = usuarioCrupier;
         this.mesaAsignada = usuarioCrupier.getMesaAsignada();
-        
+        this.inicializarSubs();
     }
 
     public Mesa getMesaAsignada() {
         return mesaAsignada;
     }
 
-        int ronda = 0;
     public void obtenerDatos() {
         int saldoMesa = mesaAsignada.getBalanceSaldo();
         //int numeroMesa = mesaAsignada.getNumeroDeMesa();
-        int numeroMesa=1;
+        int numeroMesa = 1;
         ArrayList<MecanismoSorteo> efectos = Fachada.getInstancia().getEfectos();
-        ronda++;
         //int ronda = ronda.getnumero();
-        this.vista.mostrarDatos(saldoMesa, ronda, numeroMesa, efectos);
+        this.vista.mostrarDatos(saldoMesa, mesaAsignada.getUltimaRonda().getNumero(), numeroMesa, efectos);
     }
 
     boolean bandera = true;
@@ -59,24 +57,32 @@ public class ControladorOperarMesaCrupier implements Observador {
                     MecanismoSorteo h = new ModoAleatorioCompleto(mecanismo);
                     bolaSorteada = h.sortearBola();
                     break;
+
                 case "Aleatorio Parcial":
                     MecanismoSorteo i = new ModoAleatorioParcial(mecanismo);
                     bolaSorteada = i.sortearBola();
                     break;
+
+
                 case "Simulador":
                     MecanismoSorteo j = new ModoAleatorioParcial(mecanismo);
                     bolaSorteada = j.sortearBola();
                     break;
+
                 default:
                     break;
             }
-            this.vista.mostrarBola(bolaSorteada);
-            
-            
-            agregarRonda(numeroDeRonda, balanceSaldo, bolaSorteada, montoTotalApostado, cantidadDeApuestas, mesa, mecanismo);
+
             this.vista.pausarRuleta();
+            this.vista.mostrarBola(bolaSorteada);
+            int bS = balanceSaldo; //calcular este monto.
+            this.mesaAsignada.setBalanceSaldo(bS);
+            setearRonda(bolaSorteada, montoTotalApostado, mesa, mecanismo);
         } else {
+            //esto es pagar
             bandera = true;
+            Ronda r = new Ronda();
+            this.mesaAsignada.agregarRonda(r);
             this.vista.reanudarRuleta();
         }
     }
@@ -96,20 +102,19 @@ public class ControladorOperarMesaCrupier implements Observador {
     public void ultimoNumeroSorteado() {
         this.vista.ultimoNumeroSorteado(mesaAsignada.ultimoNumeroSorteado());
     }
-    
-    public void obtenerCantidadApuestasPorRonda(){
-        
+
+    public void obtenerCantidadApuestasPorRonda() {
         Ronda ultimaRonda = mesaAsignada.getUltimaRonda();
         this.vista.obtenerCantidadDeApuestasPorRonda(ultimaRonda.totalDeApuestas());
     }
-    
-    public void montoApostadoDeRonda(){
+
+    public void montoApostadoDeRonda() {
         Ronda ultimaRonda = mesaAsignada.getUltimaRonda();
         this.vista.obtenerMontoApostadoPorRonda(ultimaRonda.getMontoTotalApostado());
     }
 
     public void cerrarMesa() {
-         //liquidar mesa (pagar)
+        //liquidar mesa (pagar)
         // desloguear jug
         usuarioCrupier.setLogueado(false);
         mesaAsignada.setDisponible(false);
@@ -120,21 +125,33 @@ public class ControladorOperarMesaCrupier implements Observador {
     @Override
     public void notificar(Observable origen, Object evento) {
 
-        if (((Observable.Evento) evento).equals(Observable.Evento.CARGAR_RONDA)) {
-
+        if (((Observable.Evento) evento).equals(Observable.Evento.BOLA_SETEADA)
+                || ((Observable.Evento) evento).equals(Observable.Evento.RONDA_AGREGADA)) {
             obtenerDatos();
             //listarJugadoresConSuSaldo();
             //listarRondasConSuInformacion();
             //ultimosLanzamientos();
             //ultimoNumeroSorteado();
         }
+        if (((Observable.Evento) evento).equals(Observable.Evento.APUESTA_AGREGADA)) {
+            montoApostadoDeRonda();
+            obtenerCantidadApuestasPorRonda();
+        }
     }
 
-    public void agregarRonda(int numeroDeRonda, int balanceSaldo, Bola bola, int montoTotalApostado, int cantidadDeApuestas, Mesa mesa, String mecanismo) {
-
-        Ronda r = new Ronda(numeroDeRonda, balanceSaldo, bola, mesa, mecanismo, montoTotalApostado);
-
-        mesa.agregarRonda(r);
+    public void setearRonda(Bola bola, int montoTotalApostado, Mesa mesa, String mecanismo) {
+        Ronda ultimaRonda = mesa.getUltimaRonda();
+        ultimaRonda.setBola(bola);
+        ultimaRonda.setMontoTotalApostado(montoTotalApostado);
+        ultimaRonda.setMesa(mesa);
+        ultimaRonda.setMecanismoSorteo(mecanismo);
     }
-   
+
+    private void inicializarSubs() {
+        this.mesaAsignada.subscribir(this);
+        for (Ronda r : this.mesaAsignada.getRondas()) {
+            r.subscribir(this);
+        }
+    }
+
 }
